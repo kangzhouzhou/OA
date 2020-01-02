@@ -1,0 +1,44 @@
+D:\Demo\OA\OA.IDAL\bin\Debug\OA.IDAL.dll.config
+D:\Demo\OA\OA.IDAL\bin\Debug\OA.IDAL.dll
+D:\Demo\OA\OA.IDAL\bin\Debug\OA.IDAL.pdb
+D:\Demo\OA\OA.IDAL\bin\Debug\EntityFramework.dll
+D:\Demo\OA\OA.IDAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Demo\OA\OA.IDAL\bin\Debug\OA.Model.dll
+D:\Demo\OA\OA.IDAL\bin\Debug\OA.Model.pdb
+D:\Demo\OA\OA.IDAL\bin\Debug\EntityFramework.xml
+D:\Demo\OA\OA.IDAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Demo\OA\OA.IDAL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\Demo\OA\OA.IDAL\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Demo\OA\OA.IDAL\obj\Debug\OA.IDAL.csprojResolveAssemblyReference.cache
+D:\Demo\OA\OA.IDAL\obj\Debug\OA.IDAL.dll
+D:\Demo\OA\OA.IDAL\obj\Debug\OA.IDAL.pdb
+D:\Demo\OA\OA.IDAL\bin\Debug\OA.Commmon.dll
+D:\Demo\OA\OA.IDAL\bin\Debug\Memcached.Client.dll
+D:\Demo\OA\OA.IDAL\bin\Debug\log4net.dll
+D:\Demo\OA\OA.IDAL\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Demo\OA\OA.IDAL\bin\Debug\OA.Commmon.pdb
+D:\Demo\OA\OA.IDAL\bin\Debug\Memcached.Client.xml
+D:\Demo\OA\OA.IDAL\bin\Debug\log4net.xml
+D:\Source Code\OA\OA.IDAL\bin\Debug\OA.IDAL.dll.config
+D:\Source Code\OA\OA.IDAL\bin\Debug\OA.IDAL.dll
+D:\Source Code\OA\OA.IDAL\bin\Debug\OA.IDAL.pdb
+D:\Source Code\OA\OA.IDAL\bin\Debug\EntityFramework.dll
+D:\Source Code\OA\OA.IDAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Source Code\OA\OA.IDAL\bin\Debug\OA.Model.dll
+D:\Source Code\OA\OA.IDAL\bin\Debug\OA.Commmon.dll
+D:\Source Code\OA\OA.IDAL\bin\Debug\Memcached.Client.dll
+D:\Source Code\OA\OA.IDAL\bin\Debug\log4net.dll
+D:\Source Code\OA\OA.IDAL\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Source Code\OA\OA.IDAL\bin\Debug\OA.Model.pdb
+D:\Source Code\OA\OA.IDAL\bin\Debug\EntityFramework.xml
+D:\Source Code\OA\OA.IDAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Source Code\OA\OA.IDAL\bin\Debug\OA.Commmon.pdb
+D:\Source Code\OA\OA.IDAL\bin\Debug\Memcached.Client.xml
+D:\Source Code\OA\OA.IDAL\bin\Debug\log4net.xml
+D:\Source Code\OA\OA.IDAL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\Source Code\OA\OA.IDAL\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Source Code\OA\OA.IDAL\obj\Debug\OA.IDAL.dll
+D:\Source Code\OA\OA.IDAL\obj\Debug\OA.IDAL.pdb
+D:\Source Code\OA\OA.IDAL\obj\Debug\OA.IDAL.csprojAssemblyReference.cache
+D:\Source Code\OA\OA.IDAL\obj\Debug\OA.IDAL.csproj.CoreCompileInputs.cache
+D:\Source Code\OA\OA.IDAL\obj\Debug\OA.IDAL.csproj.CopyComplete

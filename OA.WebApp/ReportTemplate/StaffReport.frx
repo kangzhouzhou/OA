@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReferencedAssemblies="System.dll&#13;&#10;System.Drawing.dll&#13;&#10;System.Windows.Forms.dll&#13;&#10;System.Data.dll&#13;&#10;System.Xml.dll&#13;&#10;System.Data.OracleClient.dll" ReportInfo.Created="06/02/2018 15:02:42" ReportInfo.Modified="06/06/2018 09:58:34" ReportInfo.CreatorVersion="2015.3.3.0">
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlq+rW0RkboK+/8CKGGYUID3ctBV8q9SvKYxl3iiE7vBnh7Tgou0+4WFf3NfmPSvHVFI7jnFHsSaWbPedrLY+AibVgDonsrhS6LxfuWBGXDpmJavldBRBF013MmwAfxua7ODskY21yxu9/tICNOdfLZZxzRBvgum8iPgu10lXHEtoJMsd7lWT2RJG6eEfVHdNwQ">
+      <TableDataSource Name="DictEducation" DataType="System.Int32" Enabled="true" TableName="DictEducation">
+        <Column Name="ID" DataType="System.Int32"/>
+        <Column Name="EducationName" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="DictMenu" DataType="System.Int32" Enabled="true" TableName="DictMenu">
+        <Column Name="ID" DataType="System.Int32"/>
+        <Column Name="MenuName" DataType="System.String"/>
+        <Column Name="MenuPath" DataType="System.String"/>
+        <Column Name="ParentID" DataType="System.Int32"/>
+        <Column Name="Remark" DataType="System.Int32"/>
+        <Column Name="CreateTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="DictRole" DataType="System.Int32" Enabled="true" TableName="DictRole">
+        <Column Name="ID" DataType="System.Int32"/>
+        <Column Name="RoleName" DataType="System.String"/>
+        <Column Name="Remark" DataType="System.String"/>
+        <Column Name="CreateTime" DataType="System.DateTime"/>
+        <Column Name="ModifiedTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="DictUser" DataType="System.Int32" Enabled="true" TableName="DictUser">
+        <Column Name="ID" DataType="System.Int32"/>
+        <Column Name="UID" DataType="System.String"/>
+        <Column Name="UName" DataType="System.String"/>
+        <Column Name="Upwd" DataType="System.String"/>
+        <Column Name="Remark" DataType="System.String"/>
+        <Column Name="CreateTime" DataType="System.DateTime"/>
+        <Column Name="ModifiedTime" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="DictUserInfo" DataType="System.Int32" Enabled="true" TableName="DictUserInfo">
+        <Column Name="ID" DataType="System.Int32"/>
+        <Column Name="Sex" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="Birthday" DataType="System.DateTime"/>
+        <Column Name="Salary" DataType="System.Decimal"/>
+        <Column Name="IdentityCard" DataType="System.String"/>
+        <Column Name="Tel" DataType="System.String"/>
+        <Column Name="NativePlace" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="UserRole" DataType="System.Int32" Enabled="true" TableName="UserRole">
+        <Column Name="RoleId" DataType="System.Int32"/>
+        <Column Name="UserId" DataType="System.Int32"/>
+      </TableDataSource>
+      <TableDataSource Name="RoleMenu" DataType="System.Int32" Enabled="true" TableName="RoleMenu">
+        <Column Name="MenuId" DataType="System.Int32"/>
+        <Column Name="RoleId" DataType="System.Int32"/>
+      </TableDataSource>
+      <TableDataSource Name="Table" DataType="System.Int32" Enabled="true" SelectCommand="SELECT D.ID, D.UName, D.Upwd, D.Remark, D.CreateTime, D.ModifiedTime, D.UID&#13;&#10;FROM &quot;DictUser&quot; D&#13;&#10;">
+        <Column Name="ID" DataType="System.Int32"/>
+        <Column Name="UName" DataType="System.String"/>
+        <Column Name="Upwd" DataType="System.String"/>
+        <Column Name="Remark" DataType="System.String"/>
+        <Column Name="CreateTime" DataType="System.DateTime"/>
+        <Column Name="ModifiedTime" DataType="System.DateTime"/>
+        <Column Name="UID" DataType="System.String"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" RawPaperSize="9" FirstPageSource="15" OtherPagesSource="15">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="56.7">
+      <TextObject Name="Text1" Left="132.3" Top="28.35" Width="415.8" Height="28.35" Text="员工列表鹅鹅鹅饿饿额外 对对对" HorzAlign="Center" VertAlign="Center" Font="宋体, 18pt, style=Bold"/>
+    </ReportTitleBand>
+    <ColumnHeaderBand Name="ColumnHeader1" Top="60.7" Width="718.2" Height="32.13">
+      <TableObject Name="Table1" Left="9.45" Width="699.3" Height="32.13" Border.Lines="All">
+        <TableColumn Name="Column1" Width="45.09"/>
+        <TableColumn Name="Column2" Width="73.44"/>
+        <TableColumn Name="Column3" Width="177.39"/>
+        <TableColumn Name="Column4" Width="120.69"/>
+        <TableColumn Name="Column5" Width="92.34"/>
+        <TableColumn Name="Column6" Width="81"/>
+        <TableColumn Name="Column7" Width="109.35"/>
+        <TableRow Name="Row1" Height="32.13">
+          <TableCell Name="Cell1" Border.Lines="Right" Text="序号" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt"/>
+          <TableCell Name="Cell2" Text="姓名" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt"/>
+          <TableCell Name="Cell3" Border.Lines="Left, Right" Text="333" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt"/>
+          <TableCell Name="Cell4" Border.Lines="Right" Text="备注" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt"/>
+          <TableCell Name="Cell5" Text="创建时间" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt"/>
+          <TableCell Name="Cell6" Border.Lines="Left, Right" Text="修改时间" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt"/>
+          <TableCell Name="Cell7" Text="工号" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt" TabWidth="10"/>
+        </TableRow>
+      </TableObject>
+    </ColumnHeaderBand>
+    <DataBand Name="Data1" Top="96.83" Width="718.2" Height="32.13" CanGrow="true" CanShrink="true" CanBreak="true" DataSource="Table" MaxRows="3">
+      <TableObject Name="Table1" Left="9.45" Width="699.3" Height="32.13" Border.Lines="Left, Right, Bottom" Layout="Wrapped" WrappedGap="3.78">
+        <TableColumn Name="Column8" Width="45.09"/>
+        <TableColumn Name="Column9" Width="73.44"/>
+        <TableColumn Name="Column10" Width="177.39"/>
+        <TableColumn Name="Column11" Width="120.69"/>
+        <TableColumn Name="Column12" Width="92.34"/>
+        <TableColumn Name="Column13" Width="81"/>
+        <TableColumn Name="Column14" Width="109.35"/>
+        <TableRow Name="Row2" Height="32.13">
+          <TableCell Name="Cell8" Border.Lines="Right" Text="[Table.ID]" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt"/>
+          <TableCell Name="Cell9" Text="[Table.UName]" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt"/>
+          <TableCell Name="Cell10" Border.Lines="Left, Right" Text="[Table.Upwd]" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt" Wysiwyg="true"/>
+          <TableCell Name="Cell11" Border.Lines="Right" Text="[Table.Remark]" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt"/>
+          <TableCell Name="Cell12" Text="[Table.CreateTime]" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt"/>
+          <TableCell Name="Cell13" Border.Lines="Left, Right" Text="[Table.ModifiedTime]" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt"/>
+          <TableCell Name="Cell14" Text="[Table.UID]" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt" TabWidth="10"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="132.96" Width="718.2" Height="28.35"/>
+  </ReportPage>
+</Report>

@@ -1,0 +1,49 @@
+D:\Demo\OA\OA.DALFactory\bin\Debug\OA.DALFactory.dll.config
+D:\Demo\OA\OA.DALFactory\bin\Debug\OA.DALFactory.dll
+D:\Demo\OA\OA.DALFactory\bin\Debug\OA.DALFactory.pdb
+D:\Demo\OA\OA.DALFactory\bin\Debug\EntityFramework.dll
+D:\Demo\OA\OA.DALFactory\bin\Debug\EntityFramework.SqlServer.dll
+D:\Demo\OA\OA.DALFactory\bin\Debug\OA.IDAL.dll
+D:\Demo\OA\OA.DALFactory\bin\Debug\OA.Model.dll
+D:\Demo\OA\OA.DALFactory\bin\Debug\OA.IDAL.pdb
+D:\Demo\OA\OA.DALFactory\bin\Debug\OA.Model.pdb
+D:\Demo\OA\OA.DALFactory\bin\Debug\EntityFramework.xml
+D:\Demo\OA\OA.DALFactory\bin\Debug\EntityFramework.SqlServer.xml
+D:\Demo\OA\OA.DALFactory\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\Demo\OA\OA.DALFactory\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Demo\OA\OA.DALFactory\obj\Debug\OA.DALFactory.csprojResolveAssemblyReference.cache
+D:\Demo\OA\OA.DALFactory\obj\Debug\OA.DALFactory.dll
+D:\Demo\OA\OA.DALFactory\obj\Debug\OA.DALFactory.pdb
+D:\Demo\OA\OA.DALFactory\bin\Debug\OA.Commmon.dll
+D:\Demo\OA\OA.DALFactory\bin\Debug\Memcached.Client.dll
+D:\Demo\OA\OA.DALFactory\bin\Debug\log4net.dll
+D:\Demo\OA\OA.DALFactory\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Demo\OA\OA.DALFactory\bin\Debug\OA.Commmon.pdb
+D:\Demo\OA\OA.DALFactory\bin\Debug\Memcached.Client.xml
+D:\Demo\OA\OA.DALFactory\bin\Debug\log4net.xml
+D:\Source Code\OA\OA.DALFactory\bin\Debug\OA.DALFactory.dll.config
+D:\Source Code\OA\OA.DALFactory\bin\Debug\OA.DALFactory.dll
+D:\Source Code\OA\OA.DALFactory\bin\Debug\OA.DALFactory.pdb
+D:\Source Code\OA\OA.DALFactory\bin\Debug\EntityFramework.dll
+D:\Source Code\OA\OA.DALFactory\bin\Debug\EntityFramework.SqlServer.dll
+D:\Source Code\OA\OA.DALFactory\bin\Debug\OA.IDAL.dll
+D:\Source Code\OA\OA.DALFactory\bin\Debug\OA.Model.dll
+D:\Source Code\OA\OA.DALFactory\bin\Debug\OA.Commmon.dll
+D:\Source Code\OA\OA.DALFactory\bin\Debug\Memcached.Client.dll
+D:\Source Code\OA\OA.DALFactory\bin\Debug\log4net.dll
+D:\Source Code\OA\OA.DALFactory\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Source Code\OA\OA.DALFactory\bin\Debug\OA.IDAL.pdb
+D:\Source Code\OA\OA.DALFactory\bin\Debug\OA.Model.pdb
+D:\Source Code\OA\OA.DALFactory\bin\Debug\EntityFramework.xml
+D:\Source Code\OA\OA.DALFactory\bin\Debug\EntityFramework.SqlServer.xml
+D:\Source Code\OA\OA.DALFactory\bin\Debug\OA.Commmon.pdb
+D:\Source Code\OA\OA.DALFactory\bin\Debug\Memcached.Client.xml
+D:\Source Code\OA\OA.DALFactory\bin\Debug\log4net.xml
+D:\Source Code\OA\OA.DALFactory\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\Source Code\OA\OA.DALFactory\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Source Code\OA\OA.DALFactory\obj\Debug\OA.DALFactory.dll
+D:\Source Code\OA\OA.DALFactory\obj\Debug\OA.DALFactory.pdb
+D:\Source Code\OA\OA.DALFactory\bin\Debug\OA.IDAL.dll.config
+D:\Source Code\OA\OA.DALFactory\obj\Debug\OA.DALFactory.csprojAssemblyReference.cache
+D:\Source Code\OA\OA.DALFactory\obj\Debug\OA.DALFactory.csproj.CoreCompileInputs.cache
+D:\Source Code\OA\OA.DALFactory\obj\Debug\OA.DALFactory.csproj.CopyComplete

@@ -1,0 +1,34 @@
+D:\Demo\OA\OA.Commmon\bin\Debug\OA.Commmon.dll
+D:\Demo\OA\OA.Commmon\bin\Debug\OA.Commmon.pdb
+D:\Demo\OA\OA.Commmon\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Demo\OA\OA.Commmon\bin\Debug\log4net.dll
+D:\Demo\OA\OA.Commmon\bin\Debug\Memcached.Client.dll
+D:\Demo\OA\OA.Commmon\bin\Debug\log4net.xml
+D:\Demo\OA\OA.Commmon\bin\Debug\Memcached.Client.xml
+D:\Demo\OA\OA.Commmon\obj\Debug\OA.Commmon.dll
+D:\Demo\OA\OA.Commmon\obj\Debug\OA.Commmon.pdb
+D:\Demo\OA\OA.Commmon\obj\Debug\OA.Common.csprojResolveAssemblyReference.cache
+D:\Source Code\OA\OA.Commmon\bin\Debug\OA.Commmon.dll
+D:\Source Code\OA\OA.Commmon\bin\Debug\OA.Commmon.pdb
+D:\Source Code\OA\OA.Commmon\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Source Code\OA\OA.Commmon\bin\Debug\log4net.dll
+D:\Source Code\OA\OA.Commmon\bin\Debug\Memcached.Client.dll
+D:\Source Code\OA\OA.Commmon\bin\Debug\log4net.xml
+D:\Source Code\OA\OA.Commmon\bin\Debug\Memcached.Client.xml
+D:\Source Code\OA\OA.Commmon\obj\Debug\OA.Commmon.dll
+D:\Source Code\OA\OA.Commmon\obj\Debug\OA.Commmon.pdb
+D:\Source Code\OA\OA.Commmon\obj\Debug\OA.Common.csprojAssemblyReference.cache
+D:\Source Code\OA\OA.Commmon\obj\Debug\OA.Common.csproj.CoreCompileInputs.cache
+D:\Source Code\OA\OA.Commmon\obj\Debug\OA.Common.csproj.CopyComplete
+F:\OA\OA.Commmon\bin\Debug\OA.Commmon.dll
+F:\OA\OA.Commmon\bin\Debug\OA.Commmon.pdb
+F:\OA\OA.Commmon\bin\Debug\ICSharpCode.SharpZipLib.dll
+F:\OA\OA.Commmon\bin\Debug\log4net.dll
+F:\OA\OA.Commmon\bin\Debug\Memcached.Client.dll
+F:\OA\OA.Commmon\bin\Debug\log4net.xml
+F:\OA\OA.Commmon\bin\Debug\Memcached.Client.xml
+F:\OA\OA.Commmon\obj\Debug\OA.Common.csprojAssemblyReference.cache
+F:\OA\OA.Commmon\obj\Debug\OA.Common.csproj.CoreCompileInputs.cache
+F:\OA\OA.Commmon\obj\Debug\OA.Common.csproj.CopyComplete
+F:\OA\OA.Commmon\obj\Debug\OA.Commmon.dll
+F:\OA\OA.Commmon\obj\Debug\OA.Commmon.pdb

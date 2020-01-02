@@ -1,0 +1,344 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" charset="utf-8" />
+    <title>角色管理</title>
+    <script src="/Scripts/KxScripts/KxBase.js"></script>
+    <script src="/Scripts/KxScripts/KxAjax.js"></script>
+
+    <script src="~/Scripts/jquery-1.11.3.js"></script>
+    <script src="~/Scripts/jquery.easyui-1.4.5.js"></script>
+    <script src="~/Scripts/locale/easyui-lang-zh_CN.js"></script>
+    <link href="~/Content/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/themes/default/easyui.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="divContainer" class="easyui-layout" style="width:100%;height:100%;margin:0px;padding:0px">
+        <div data-options="region:'west',title:'&nbsp;&nbsp;角&nbsp;色&nbsp;列&nbsp;表',collapsible:false" style="width:50%;margin:0px;padding:0px;">
+            <table id="tbDictRole" style="height:100%"></table>
+        </div>
+        <div data-options="region:'center',title:'&nbsp;&nbsp;菜&nbsp;单&nbsp;列&nbsp;表'" style="width:50%;margin:0px;padding:0px;">
+            <table id="tbDictMenu" style="height:100%"></table>
+        </div>
+    </div>
+    <div id="divAddRole" style="display:none">
+        <table>
+            <tr>
+                <td>&nbsp;角色名称：</td>
+                <td><input type="text" id="RoleName" name="RoleName" required="required" /></td>
+            </tr>
+            <tr>
+                <td>&nbsp;备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</td>
+                <td><input type="text" id="RoleRemark" name="Remark" /></td>
+            </tr>
+        </table>
+    </div>
+    <div id="divEditRole" style="display:none">
+        <input type="hidden" id="editRoleID" />
+        <table>
+            <tr>
+                <td>&nbsp;角色名称：</td>
+                <td><input type="text" id="editRoleName" name="editRoleName" required="required" /></td>
+            </tr>
+            <tr>
+                <td>&nbsp;备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</td>
+                <td><input type="text" id="editRoleRemark" name="editRoleRemark" /></td>
+            </tr>
+        </table>
+    </div>
+    <style type="text/css">
+        #divAddRole, #divEditRole td {
+            text-align: right;
+            width: 80px;
+            color: black;
+            font-size: 12px;
+            padding-top: 5px;
+        }
+        #divAddRole, #divEditRole input[type="text"] {
+            width: 169px;
+        }
+        input:required {
+            background-color: coral;
+        }
+    </style>
+    <script type="text/javascript">
+        Kx.ready(function () {
+            loadRole();
+            loadMenu();
+        });
+
+        //加载角色字典
+        function loadRole() {
+            $("#tbDictRole").datagrid({
+                url: "/User/GetDictRole",
+                singleSelect: true,
+                columns: [[
+                    { field: 'ID', title: '序号', width: '20%', align: 'center' },
+		            { field: 'RoleName', title: '角色', width: '40%', align: 'center' },
+		            { field: 'Remark', title: '备注', width: '40%', align: 'center' }
+                ]],
+                toolbar: [
+                    {
+                        iconCls: 'icon-add',
+                        text: "增加",
+                        handler: function () {
+                            showAddRole();
+                        }
+                    }, {
+                        iconCls: 'icon-edit',
+                        text: "编辑",
+                        handler: function () {
+                            var selectedRow = $("#tbDictRole").datagrid("getSelected");
+                            if (selectedRow == null) {
+                                $.messager.alert("提示", "请选择需要编辑的角色!");
+                                return;
+                            }
+                            showEditRole(selectedRow);
+                        }
+                    }, {
+                        iconCls: 'icon-remove',
+                        text: "删除",
+                        handler: function () {
+                            var selectedRow = $("#tbDictRole").datagrid("getSelected");
+                            if (selectedRow == null) {
+                                $.messager.alert("提示", "请选择要删除的角色!");
+                                return;
+                            }
+                            removeRole(selectedRow);
+                        }
+                    }
+                ],
+                onClickRow: function (index, rowData) {
+                    loadRoleMenu(rowData.ID);
+                }
+            });
+        }
+
+        //加载菜单
+        function loadMenu() {
+            $("#tbDictMenu").treegrid({
+                url: "/User/GetDictMenu",
+                idField: "ID",
+                treeField: "MenuName",
+                parentField: "_parentId",
+                checkbox: true,
+                lines: true,
+                loadMsg: "正在加载数据中,请稍等...",
+                toolbar: [{
+                    text: "保存",
+                    iconCls: "icon-save",
+                    handler: function () {
+                        var selectedRow = $("#tbDictRole").datagrid("getSelected");
+                        if (selectedRow == null) {
+                            $.messager.alert("提示", "请选择角色后再进行保存!");
+                            return;
+                        }
+                        saveRoleMenu(selectedRow.ID);
+                    }
+                }],
+                columns: [[
+                    {
+                        title: "菜单名称",
+                        field: "MenuName",
+                        width: '30%',
+                        align: "center"
+                    }, {
+                        title: "执行路径",
+                        field: "MenuPath",
+                        width: '40%',
+                        align: "center"
+                    }, {
+                        title: "备注",
+                        field: "Remark",
+                        width: '30%',
+                        align: "center"
+                    }
+                ]]
+            });
+        }
+
+        //加载指定角色的菜单
+        function loadRoleMenu(roleId) {
+            Kx.post("/User/GetRoleMenu", {
+                id: roleId
+            }, function (serData) {
+                var dataRows = $("#tbDictMenu").treegrid("getData");
+                for (var i = 0; i < dataRows.length; i++) {
+                    $("#tbDictMenu").treegrid("update", { id: dataRows[i].ID, row: { checked: false } });
+                }
+                if (serData.length > 0) {
+                    var menuArray = serData.split(",");
+                    for (var i = 0; i < menuArray.length; i++) {
+                        var node = $("#tbDictMenu").treegrid("find", menuArray[i]);
+                        if (node.children == null || node.children.length == 0) {
+                            $("#tbDictMenu").treegrid("update", { id: menuArray[i], row: { checked: true } });
+                        }
+                    }
+                }
+            }, false);
+        }
+
+        //显示增加角色
+        function showAddRole() {
+            $("#divAddRole").css("display", "block")
+                .dialog({
+                    title: '增加角色',
+                    width: 300,
+                    height: 150,
+                    modal: true,
+                    buttons: [{
+                        text: '保 存',
+                        iconCls: "icon-save",
+                        handler: function () {
+                            saveAddRole();
+                        }
+                    }, {
+                        text: '关 闭',
+                        iconCls: "icon-cancel",
+                        handler: function () {
+                            $("#divAddRole").dialog("close");
+                            clearAddRole();
+                        }
+                    }]
+                });
+        }
+
+        //保存增加角色
+        function saveAddRole() {
+            var nameEle = document.getElementById("RoleName");
+            if (nameEle.value.length == 0) {
+                $.messager.alert("提示", "角色名必须进行填写!");
+                return;
+            }
+            Kx.post("/User/AddRole", {
+                RoleName: nameEle.value,
+                RoleRemark: document.getElementById("RoleRemark").value
+            }, function (serData) {
+                if (serData == "1") {
+                    $.messager.show({ title: "提示", msg: "角色增加成功!" });
+                    $("#tbDictRole").datagrid("reload");
+                    $("#divAddRole").dialog("close");
+                    clearAddRole();
+                } else {
+                    $.messager.alert("提示", "增加角色失败!");
+                }
+            });
+        }
+
+        //清除增加角色内容
+        function clearAddRole() {
+            document.getElementById("RoleName").value = "";
+            document.getElementById("RoleRemark").value = "";
+        }
+
+        //显示编辑角色
+        function showEditRole(selectedRow) {
+            //赋值操作
+            document.getElementById("editRoleName").value = selectedRow.RoleName;
+            document.getElementById("editRoleRemark").value = selectedRow.Remark;
+            document.getElementById("editRoleID").value = selectedRow.ID;
+            $("#divEditRole").css("display", "block")
+               .dialog({
+                   title: '编辑角色',
+                   width: 300,
+                   height: 150,
+                   modal: true,
+                   buttons: [{
+                       text: '保 存',
+                       iconCls: "icon-save",
+                       handler: function () {
+                           saveEditRole();
+                       }
+                   }, {
+                       text: '关 闭',
+                       iconCls: "icon-cancel",
+                       handler: function () {
+                           $("#divEditRole").dialog("close");
+                           clearEditRole();
+                       }
+                   }]
+               });
+        }
+
+        //保存编辑角色
+        function saveEditRole() {
+            var nameEle = document.getElementById("editRoleName");
+            if (nameEle.value.length == 0) {
+                $.messager.alert("提示", "角色名必须进行填写!");
+                return;
+            }
+            Kx.post("/User/EditRole", {
+                RoleID: document.getElementById("editRoleID").value,
+                RoleName: nameEle.value,
+                RoleRemark: document.getElementById("editRoleRemark").value
+            }, function (serData) {
+                if (serData == "1") {
+                    $.messager.show({ title: "提示", msg: "角色编辑成功!" });
+                    $("#tbDictRole").datagrid("reload");
+                    $("#divEditRole").dialog("close");
+                    clearEditRole();
+                } else {
+                    $.messager.alert("提示", "编辑角色失败!");
+                }
+            });
+        }
+
+        //清除编辑角色内容
+        function clearEditRole() {
+            document.getElementById("editRoleID").value = "";
+            document.getElementById("editRoleName").value = "";
+            document.getElementById("editRoleRemark").value = "";
+        }
+
+        //删除角色
+        function removeRole(selectedRow) {
+            $.messager.confirm("提示", "确定要删除该角色吗?!", function (result) {
+                if (result) {
+                    Kx.post("/User/RemoveRole", { roleId: selectedRow.ID }, function (serData) {
+                        if (serData == "1") {
+                            $.messager.show({ title: "提示", msg: "角色删除成功!" });
+                            $("#tbDictRole").datagrid("reload");
+                        } else {
+                            $.messager.alert("提示", "删除角色失败!");
+                        }
+                    });
+                }
+            });
+        }
+
+        //保存菜单
+        function saveRoleMenu(roleID) {
+            //获取所有选中的菜单
+            var dataRows = $("#tbDictMenu").treegrid("getData");
+            var menuIdStr = [];
+            for (var i = 0; i < dataRows.length; i++) {
+                //判断根节点
+                if (dataRows[i].checkState == "indeterminate" || dataRows[i].checkState == "checked") {
+                    menuIdStr.push(dataRows[i].ID);
+                    //判断子节点
+                    for (var c = 0; c < dataRows[i].children.length; c++) {
+                        if (dataRows[i].children[c].checkState == "checked") {
+                            menuIdStr.push(dataRows[i].children[c].ID);
+                        }
+                    }
+                }
+            }
+            Kx.post("/User/SaveRoleMenu", {
+                RoleID: roleID,
+                MenuArray: menuIdStr.join(",")
+            }, function (serData) {
+                if (serData == "1") {
+                    $.messager.show({ title: "提示", msg: "角色对应菜单保存成功!" });
+                } else {
+                    $.messager.alert("提示", "角色对应菜单保存失败");
+                }
+            });
+        }
+    </script>
+</body>
+</html>

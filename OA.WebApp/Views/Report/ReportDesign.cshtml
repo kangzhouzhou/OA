@@ -1,0 +1,253 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" charset="utf-8" />
+    <title>报表设计</title>
+    <script src="/Scripts/KxScripts/KxBase.js"></script>
+    <script src="/Scripts/KxScripts/KxAjax.js"></script>
+
+    <script src="~/Scripts/jquery-1.11.3.js"></script>
+    <script src="~/Scripts/jquery.easyui-1.4.5.js"></script>
+    <script src="~/Scripts/locale/easyui-lang-zh_CN.js"></script>
+    <link href="~/Content/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/themes/default/easyui.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="divContainer" class="easyui-layout" style="width:100%;height:100%;margin:0px;padding:0px">
+        <div id="divReport" data-options="region:'west',collapsible:false" style="width:400px;height:100%;margin:0px;padding:0px;border-width:0px 2px 0px 0px;">
+            <table id="tbReport"></table>
+        </div>
+        <div id="divCenter" data-options="region:'center'" style="height:100%;margin:0px;padding:0px;">
+            <div style="text-align:center;font-size:18px;margin-top:10px;">自&nbsp;定&nbsp;义&nbsp;报&nbsp;表&nbsp;编辑&nbsp;</div>
+            <div id="divAddReport" style="padding:0px;margin:auto;width:300px;display:none;">
+                <div>
+                    <table id="tbAdd" style="margin-top:20px;">
+                        <tr>
+                            <td>函数名称：</td>
+                            <td><input id="txtFunName" type="text" /></td>
+                        </tr>
+                        <tr>
+                            <td>报表名称：</td>
+                            <td><input id="txtReportName" type="text" /></td>
+                        </tr>
+                        <tr>
+                            <td>模板名称：</td>
+                            <td><input id="txtReportFile" type="text" /></td>
+                        </tr>
+                        <tr>
+                            <td>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</td>
+                            <td><input id="txtRemark" type="text" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <input id="btnEarchFun" type="button" value="查询函数" style="margin-left:90px;" />
+                    <input id="btnAddSave" type="button" value="报表保存" style="margin-left:5px;" />
+                </div>
+            </div>
+            <div id="divEditReport" style="padding:0px;margin:auto;width:400px;display:none;">
+            </div>
+        </div>
+    </div>
+    <style type="text/css">
+        #divAddReport td, #divEditReport td 
+        {
+            padding-left: 5px;
+            text-align: right;
+            width: 80px;
+            color: black;
+            font-size: 12px;
+        }
+        #divAddReport tr, #divEditReport tr {
+            padding-top:5px;
+        }
+         #divAddReport select, #divEditReport select{
+             width:173px;
+        }
+    </style>
+    <script type="text/javascript">
+        var dictArgument = null;
+        Kx.ready(function () {
+            getReportList();
+            getDictArgument();
+            $("#btnEarchFun").click(earchFun);
+            $("#btnAddSave").click(addReportSaveHandler);
+        });
+
+        //加载报表列表
+        function getReportList() {
+            $("#tbReport").datagrid({
+                url: "/Report/GetReportList",
+                pagination: false,
+                singleSelect: true,
+                height: "100%",
+                columns: [[
+                    { field: 'ID', title: '编号', width: '10%', align: 'center' },
+                    { field: 'ReportName', title: '名称', width: '30%', align: 'center' },
+                    { field: 'FuncName', title: '函数名称', width: '40%', align: 'center' },
+                    { field: 'ArgumentCount', title: '参数数量', width: '20%', align: 'center' }
+                ]],
+                toolbar: [
+                    {
+                        iconCls: 'icon-add',
+                        text: "增加",
+                        handler: function () {
+                            showAddReportHandler();
+                        }
+                    }, {
+                        iconCls: 'icon-edit',
+                        text: "编辑",
+                        handler: function () {
+
+                        }
+                    }, {
+                        iconCls: 'icon-remove',
+                        text: "删除",
+                        handler: function () {
+
+                        }
+                    }
+                ]
+            });
+        }
+
+        //加载参数字典
+        function getDictArgument() {
+            Kx.post("/Report/GetDictArgument", null, function (serData) {
+                var objJson = JSON.parse(serData);
+                if (objJson.state == "1") {
+                    dictArgument = "<select>"
+                    for (var i = 0; i < objJson.data.length; i++) {
+                        dictArgument += "<option value=" + objJson.data[i].ID + ">" + objJson.data[i].Name + "</option>"
+                    }
+                    dictArgument += "</select>";
+                }
+            });
+        }
+
+        //进行函数查询
+        function earchFun(event) {
+            clearAddReportArgumentHandler();
+            var txtFunName = $("#txtFunName").val();
+            if (txtFunName.trim().length == 0) {
+                $.messager.alert("提示", "请输入函数名称后再次进行查询!");
+                return;
+            }
+            Kx.mask("", $("#divCenter")[0]);
+            Kx.post("/Report/EarchFun", { funName: txtFunName }, function (serData) {
+                var jsonObj = JSON.parse(serData);
+                if (jsonObj.state == "1") {
+                    $("#txtFunName").attr("readonly", true);
+                    for (var i = 0; i < jsonObj.data.length; i++) {
+                        $("#tbAdd").append($("<tr><td>" + jsonObj.data[i].ArgumentName + "</td><td>" + dictArgument + "</td></tr><tr><td>【" + jsonObj.data[i].ArgumentName + "】显示名称</td><td><input type='text'/></td></tr>"));
+                    }
+                    Kx.unMask();
+                } else {
+                    Kx.unMask();
+                    $.messager.alert("提示", "该函数或存储过程不存在!");
+                }
+            });
+        }
+
+        //显示增加报表
+        function showAddReportHandler() {
+            $("#divEditReport").css("display", "none");
+            $("#divAddReport").css("display", "block");
+            clearAddReportValueHandler();
+        }
+
+        //增加报表
+        function addReportSaveHandler() {
+            //基本逻辑判断
+            if (!$("#txtFunName").attr("readonly")) {
+                $.messager.alert("提示", "请查询函数进行编辑后再进行保存操作!");
+                return;
+            }
+            if ($("#txtReportName").val().length == 0) {
+                $.messager.alert("提示", "请输入报表名称,否则无法进行保存!");
+                return;
+            }
+            if ($("#txtReportFile").val().length == 0) {
+                $.messager.alert("提示", "请输入模板名称,否则无法进行保存!");
+                return;
+            }
+            if ($("#txtReportFile").val().indexOf(".frx") == -1) {
+                $("#txtReportFile").val($("#txtReportFile").val() + ".frx");
+            }
+            var reportObj = {};
+            //选择项的判断
+            var trAddEle = $("#tbAdd tr");
+            trAddEle.each(function (index, ele) {
+                if (index > 3) {
+                    //下拉选择
+                    if (index % 2 == 0) {
+                        var selectEle = $(ele).find("select");
+                        if (selectEle.val() == "") {
+                            $.messager.alert("提示", "参数【" + $(ele).find("td:eq(0)").text() + "】未进行选择");
+                            //类似于break,return true实现的是continue
+                            return false;
+                        } else {
+                            reportObj[$(ele).find("td:eq(0)").text()] = selectEle.val();
+                        }
+                    } else {
+                        var txtNameEle = $(ele).find("input");
+                        if (txtNameEle.val().length == 0) {
+                            $.messager.alert("提示", +$(ele).find("td:eq(0)").text() + "未填写");
+                            //类似于break,return true实现的是continue
+                            return false;
+                        } else {
+                            reportObj[$(ele).find("td:eq(0)").text().replace("显示名称", "")] = txtNameEle.val();
+                        }
+                    }
+                }
+            });
+            reportObj.funName = $("#txtFunName").val();
+            reportObj.reportName = $("#txtReportName").val();
+            reportObj.reportFile = $("#txtReportFile").val();
+            reportObj.remark = $("#txtRemark").val();
+            Kx.mask();
+            Kx.post("/Report/AddReport", reportObj, function (serData) {
+                if (serData == "1") {
+                    clearAddReportValueHandler();
+                    $("#divAddReport").css("display", "none");
+                    getReportList();
+                    Kx.unMask();
+                    $.messager.show({ title: "提示", msg: "自定义报表保存成功!" });
+                }
+                else {
+                    Kx.unMask();
+                    $.messager.alert("提示", serData);
+                }
+            });
+        }
+
+        //清除增加报表text数据
+        function clearAddReportValueHandler() {
+            $("#txtFunName").attr("readonly", false).val("");
+            $("#txtReportName").val("");
+            $("#txtReportFile").val("");
+            $("#txtRemark").val("");
+            clearAddReportArgumentHandler();
+        }
+
+        //清除增加报表的select数据
+        function clearAddReportArgumentHandler() {
+            var trAddEle = $("#tbAdd tr");
+            if (trAddEle.length > 4) {
+                for (var i = trAddEle.length - 1 ; i >= 4; i--) {
+                    $(trAddEle[i]).remove();
+                }
+            }
+        }
+
+        //加载报表详细信息
+        function getReportInfo(reportId) {
+        }
+    </script>
+</body>
+</html>

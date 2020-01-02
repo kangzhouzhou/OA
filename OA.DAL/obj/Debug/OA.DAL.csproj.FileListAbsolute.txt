@@ -1,0 +1,17 @@
+D:\Demo\OA\OA.DAL\bin\Debug\OA.DAL.dll.config
+D:\Demo\OA\OA.DAL\bin\Debug\OA.DAL.dll
+D:\Demo\OA\OA.DAL\bin\Debug\OA.DAL.pdb
+D:\Demo\OA\OA.DAL\bin\Debug\EntityFramework.dll
+D:\Demo\OA\OA.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Demo\OA\OA.DAL\bin\Debug\OA.IDAL.dll
+D:\Demo\OA\OA.DAL\bin\Debug\OA.Model.dll
+D:\Demo\OA\OA.DAL\bin\Debug\OA.IDAL.pdb
+D:\Demo\OA\OA.DAL\bin\Debug\OA.Model.pdb
+D:\Demo\OA\OA.DAL\bin\Debug\EntityFramework.xml
+D:\Demo\OA\OA.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Demo\OA\OA.WebApp\bin\OA.DAL.dll.config
+D:\Demo\OA\OA.WebApp\bin\OA.DAL.dll
+D:\Demo\OA\OA.WebApp\bin\OA.DAL.pdb
+D:\Demo\OA\OA.DAL\obj\Debug\OA.DAL.csprojResolveAssemblyReference.cache
+D:\Demo\OA\OA.DAL\obj\Debug\OA.DAL.dll
+D:\Demo\OA\OA.DAL\obj\Debug\OA.DAL.pdb

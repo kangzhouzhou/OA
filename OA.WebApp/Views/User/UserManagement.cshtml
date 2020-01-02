@@ -1,0 +1,678 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" charset="utf-8" />
+    <title>用户管理</title>
+
+    <script src="/Scripts/KxScripts/KxBase.js"></script>
+    <script src="/Scripts/KxScripts/KxAjax.js"></script>
+
+    <script src="~/Scripts/jquery-1.11.3.js"></script>
+    <script src="~/Scripts/jquery.easyui-1.4.5.js"></script>
+    <script src="~/Scripts/locale/easyui-lang-zh_CN.js"></script>
+    <link href="~/Content/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/Scripts/Css/formCss.css" rel="stylesheet" />
+</head>
+<body>
+    <table id="tbDataGrid"></table>
+    <!--增加-->
+    <div id="divAdd" style="display:none">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        用&nbsp;&nbsp;户&nbsp;ID：
+                    </td>
+                    <td>
+                        <input type="text" id="UID" name="UID" required="required" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        用&nbsp;&nbsp;户&nbsp;名：
+                    </td>
+                    <td>
+                        <input type="text" id="UName" name="UName" required="required" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
+                    <td>
+                        <input type="text" id="Upwd" name="Upwd" required="required" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>角&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;色：</td>
+                    <td>
+                        <select id="DictRole" name="DictRole" class="easyui-combobox"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>详细信息：</td>
+                    <td style="text-align: left;">
+                        <input type="radio" name="isDetail" id="dTrue" /><label for="dTrue">是</label>&nbsp;&nbsp;
+                        <input type="radio" name="isDetail" id="dFalse" checked="checked" />
+                        <label for="dFalse">否</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</td>
+                    <td style="text-align: left;">
+                        <input type="radio" name="Sex" id="sexM" checked="checked" value="男" /><label for="sexM">男</label>&nbsp;&nbsp;
+                        <input type="radio" name="Sex" id="sexW" value="女" /><label for="sexW">女</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>入职时间：</td>
+                    <td>
+                        <input id="EntryTime" name="EntryTime" type="text" class="easyui-datebox">
+                    </td>
+                </tr>
+                <tr>
+                    <td>身份证号：</td>
+                    <td>
+                        <input id="IdentityCard" name="IdentityCard" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>出生日期：</td>
+                    <td>
+                        <input id="Birthday" name="Birthday" type="text" class="easyui-datebox">
+                    </td>
+                </tr>
+                <tr>
+                    <td>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历：</td>
+                    <td>
+                        <select id="DictEducationID" name="DictEducationID" class="easyui-combobox"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>联系方式：</td>
+                    <td>
+                        <input id="Tel" name="Tel" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;薪：</td>
+                    <td>
+                        <input id="Salary" name="Salary" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯：
+                    </td>
+                    <td>
+                        <input id="NativePlace" name="NativePlace" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</td>
+                    <td>
+                        <input id="Remark" type="text" name="Remark" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--修改-->
+    <div id="divEdit" style="display:none">
+        <input type="hidden" id="editID" />
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        用&nbsp;&nbsp;户&nbsp;ID：
+                    </td>
+                    <td>
+                        <input type="text" id="editUID" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        用&nbsp;&nbsp;户&nbsp;名：
+                    </td>
+                    <td>
+                        <input type="text" id="editUName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
+                    <td>
+                        <input type="password" id="editUpwd" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>确认密码：</td>
+                    <td>
+                        <input type="password" id="editAgainUpwd" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>角&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;色：</td>
+                    <td>
+                        <select id="editDictRole" name="DictRole" class="easyui-combobox"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>详细信息：</td>
+                    <td style="text-align: left;">
+                        <input type="radio" name="isDetail" id="editDTrue" /><label for="dTrue">是</label>&nbsp;&nbsp;
+                        <input type="radio" name="isDetail" id="editDFalse" />
+                        <label for="dFalse">否</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</td>
+                    <td style="text-align: left;">
+                        <input type="radio" name="editSex" id="editSexM" checked="checked" value="男" /><label for="sexM">男</label>&nbsp;&nbsp;
+                        <input type="radio" name="editSex" id="editSexW" value="女" /><label for="sexW">女</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>入职时间：</td>
+                    <td>
+                        <input id="editEntryTime" name="editEntryTime" type="text" class="easyui-datebox">
+                    </td>
+                </tr>
+                <tr>
+                    <td>身份证号：</td>
+                    <td>
+                        <input id="editIdentityCard" name="IdentityCard" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>出生日期：</td>
+                    <td>
+                        <input id="editBirthday" name="editBirthday" type="text" class="easyui-datebox">
+                    </td>
+                </tr>
+                <tr>
+                    <td>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历：</td>
+                    <td>
+                        <select id="editDictEducationID" name="DictEducationID" class="easyui-combobox"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>联系方式：</td>
+                    <td>
+                        <input id="editTel" name="Tel" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;薪：</td>
+                    <td>
+                        <input id="editSalary" name="Salary" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯：
+                    </td>
+                    <td>
+                        <input id="editNativePlace" name="NativePlace" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</td>
+                    <td>
+                        <input id="editRemark" type="text" name="Remark" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <style type="text/css">
+        #divEdit td, #divAdd td {
+            text-align: right;
+            width: 80px;
+            color: black;
+            font-size: 12px;
+        }
+
+        #divEdit input[type="text"], #divAdd input[type="text"] {
+            width: 169px;
+        }
+
+        #DictEducationID, #DictRole, #editDictEducationID, #editDictRole {
+            width: 173px;
+        }
+    </style>
+    <script type="text/javascript">
+        Kx.ready(function () {
+            loadUser();
+            initBascDict();
+            blurVerify();
+        });
+
+        //初始化基础字典,学历等等
+        function initBascDict() {
+            Kx.post("/User/GetDictEducation", null, function (serverData) {
+                var educationArray = JSON.parse(serverData);
+                $('#DictEducationID').combobox({
+                    valueField: 'ID',
+                    textField: 'EducationName',
+                    panelHeight: 140,
+                    editable: false,
+                    data: educationArray
+                });
+                $('#editDictEducationID').combobox({
+                    valueField: 'ID',
+                    textField: 'EducationName',
+                    panelHeight: 140,
+                    editable: false,
+                    data: educationArray
+                });
+            });
+            Kx.post("/User/GetDictRole", null, function (serverData) {
+                var roleArray = JSON.parse(serverData);
+                $('#DictRole').combobox({
+                    valueField: 'ID',
+                    textField: 'RoleName',
+                    panelHeight: 140,
+                    editable: false,
+                    data: roleArray,
+                    multiple: true
+                });
+                $('#editDictRole').combobox({
+                    valueField: 'ID',
+                    textField: 'RoleName',
+                    panelHeight: 140,
+                    editable: false,
+                    data: roleArray,
+                    multiple: true
+                });
+            });
+        }
+
+        //加载数据
+        function loadUser() {
+            $("#tbDataGrid").datagrid({
+                url: "/User/LoadUserList",
+                pagination: true,
+                pageNumber: 1,
+                pageSize: 5,
+                pageList: [5, 10, 15],
+                singleSelect: true,
+                columns: [[
+                    { field: 'ID', title: '编号', width: '10%', align: 'center' },
+		            { field: 'UID', title: '用户名', width: '10%', align: 'center' },
+                    { field: 'UName', title: '姓名', width: '10%', align: 'center' },
+                    { field: 'DictRole', title: '角色', width: '10%', align: 'center' },
+		            { field: 'Remark', title: '备注', width: '40%', align: 'left' },
+                    { field: "CreateTime", title: "创建时间", width: '15%', align: 'center', formatter: dateFormat },
+                    { field: "DetailFlag", title: "详细信息", width: '5%', align: 'center' }
+                ]]
+                , toolbar: [{
+                    iconCls: 'icon-add',
+                    text: "增加用户",
+                    handler: function () {
+                        showAddUser();
+                    }
+                }, {
+                    iconCls: 'icon-edit',
+                    text: "编辑用户",
+                    handler: function () {
+                        var selectedRow = $("#tbDataGrid").datagrid("getSelected");
+                        if (selectedRow == null) {
+                            $.messager.alert("提示", "请进行选择所要编辑的人员!");
+                            return;
+                        }
+                        showEditUser(selectedRow);
+                    }
+                }, {
+                    iconCls: 'icon-remove',
+                    text: "删除用户",
+                    handler: function () {
+                        var selectedRow = $("#tbDataGrid").datagrid("getSelected");
+                        if (selectedRow == null) {
+                            $.messager.alert("提示", "请进行选择所要删除的人员");
+                            return;
+                        }
+                        removeUser(selectedRow);
+                    }
+                }]
+            });
+        }
+
+        //dataGrid日期转换函数
+        function dateFormat(val, row) {
+            var date = new Date(val);
+            return date.format();
+        }
+
+        //日期格式化
+        Date.prototype.format = function () {
+            var yearV, monthV, dateV, hourV, minuteV, secondV;
+            yearV = this.getFullYear();
+            monthV = this.getMonth() + 1;
+            dateV = this.getDate();
+            hourV = this.getHours();
+            minuteV = this.getMinutes();
+            secondV = this.getSeconds();
+            if (hourV || minuteV || secondV) {
+                return yearV + "-" + monthV + "-" + dateV + " " + hourV + ":" + minuteV + ":" + secondV;
+            } else {
+                return yearV + "-" + monthV + "-" + dateV;
+            }
+        }
+
+        //初始化失去焦点事件,进行验证
+        function blurVerify() {
+            document.getElementById("UID").onblur = function () {
+                Kx.post("/User/Verify", { content: this.name, data: this.value }, function (serData) {
+                    if (!serData) {
+                        $.messager.alert("警告", "用户UID重复,请更换其他UID。");
+                    }
+                });
+            };
+            document.getElementById("editUID").onblur = function () {
+                Kx.post("/User/Verify", { content: this.name, data: this.value }, function (serData) {
+                    if (!serData) {
+                        $.messager.alert("警告", "用户UID重复,请更换其他UID。");
+                    }
+                });
+            };
+        }
+
+        //显示增加用户框
+        function showAddUser() {
+            $("#divAdd").css("display", "block")
+               .dialog({
+                   title: '增加用户',
+                   width: 300,
+                   height: 430,
+                   modal: true,
+                   buttons: [{
+                       text: '保 存',
+                       iconCls: "icon-save",
+                       handler: function () {
+                           saveUser();
+                       }
+                   }, {
+                       text: '关 闭',
+                       iconCls: "icon-cancel",
+                       handler: function () {
+                           $("#divAdd").dialog("close");
+                           clearSaveUser();
+                       }
+                   }]
+               });
+        }
+
+        //保存新增用户
+        function saveUser() {
+            var formData;
+            var reqEles = document.querySelectorAll("#divAdd [required]");
+            var reqElesLength = reqEles.length;
+            for (var i = 0; i < reqElesLength; i++) {
+                if (reqEles[i].value.length == 0) {
+                    $.messager.alert("提示", "用户ID,用户名,密码均为必填字段!");
+                    return;
+                }
+            }
+            //单独判断角色
+            var dictRole = $("#DictRole").combobox("getValues");
+            if (dictRole == "") {
+                $.messager.alert("提示", "角色为必选字段,且可以进行多选!");
+                return;
+            }
+            if ($("#dTrue")[0].checked) {
+                var errInfo = "";
+                //进行详细信息字段校验
+                var entryTime = $("#EntryTime").datebox("getValue");
+                if (isNaN(Date.parse(entryTime))) {
+                    errInfo += "&nbsp;&nbsp;&nbsp;&nbsp;入职时间<br/>";
+                }
+                var identityCard = document.getElementById("IdentityCard").value;
+                if (!(/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/).test(identityCard)) {
+                    errInfo += "&nbsp;&nbsp;&nbsp;&nbsp;身份证号码<br/>";
+                }
+                var birthday = $("#Birthday").datebox("getValue");
+                if (isNaN(Date.parse(birthday))) {
+                    errInfo += "&nbsp;&nbsp;&nbsp;&nbsp;出生日期<br/>";
+                }
+                var dictEducationId = $('#DictEducationID').combobox("getValue");
+                if (dictEducationId == "") {
+                    errInfo += "&nbsp;&nbsp;&nbsp;&nbsp;学历<br/>";
+                }
+                var salary = document.getElementById("Salary").value;
+                if (salary != "" && isNaN(salary)) {
+                    errInfo += "&nbsp;&nbsp;&nbsp;&nbsp;月薪<br/>";
+                }
+                if (errInfo.length > 0) {
+                    $.messager.alert("警告", "以下信息未正确填写,无法保存人员信息<br/>" + errInfo);
+                    return;
+                }
+            }
+            formData = new FormData();
+            formData.append("UID", document.getElementById("UID").value);
+            formData.append("UName", document.getElementById("UName").value);
+            formData.append("Upwd", document.getElementById("Upwd").value);
+            formData.append("Remark", document.getElementById("Remark").value);
+            formData.append("DictRole", $("#DictRole").combobox("getValues"));
+            formData.append("DetailTrue", $("#dTrue")[0].checked ? "1" : "");
+            if ($("#dTrue")[0].checked) {
+                formData.append("EntryTime", $("#EntryTime").datebox("getValue"));
+                formData.append("IdentityCard", document.getElementById("IdentityCard").value);
+                formData.append("Birthday", $("#Birthday").datebox("getValue"));
+                formData.append("DictEducationID", $('#DictEducationID').combobox("getValue"));
+                formData.append("Tel", document.getElementById("Tel").value);
+                formData.append("Salary", document.getElementById("Salary").value);
+                formData.append("NativePlace", document.getElementById("NativePlace").value);
+                formData.append("Sex", document.getElementById("sexM").checked ? "男" : "女");
+            }
+            Kx.post("/User/AddUser", formData, function (serData) {
+                if (serData.indexOf("0") == -1) {
+                    $("#tbDataGrid").datagrid("reload");
+                    $("#divAdd").dialog("close");
+                    clearSaveUser();
+                } else {
+                    $.messager.alert("提示", serData.split("#")[1]);
+                }
+            });
+        }
+
+        //清除增加人员信息数据
+        function clearSaveUser() {
+            document.getElementById("UID").value = "";
+            document.getElementById("UName").value = "";
+            document.getElementById("Upwd").value = "";
+            $("#DictRole").combobox("setValue", "");
+            document.getElementById("Remark").value = "";
+            $("#dFalse")[0].checked = true;
+            $("#EntryTime").datebox("setValue", "");
+            document.getElementById("IdentityCard").value = "";
+            $("#Birthday").datebox("setValue", "");
+            $('#DictEducationID').combobox("setValue", "");
+            document.getElementById("Tel").value = "";
+            document.getElementById("Salary").value = "";
+            document.getElementById("NativePlace").value = "";
+            document.getElementById("sexM").checked = true;
+        }
+
+        //显示修改用户框
+        function showEditUser(selectedRow) {
+            Kx.post("/User/UserLoad", { id: selectedRow.ID }, function (serverData) {
+                var jsonObj = JSON.parse(serverData);
+                document.getElementById("editID").value = jsonObj.ID;
+                document.getElementById("editUID").value = jsonObj.UID;
+                document.getElementById("editUName").value = jsonObj.UName;
+                document.getElementById("editRemark").value = jsonObj.Remark;
+                $("#editDictRole").combobox("setValues", jsonObj.DictRole);
+                if (jsonObj.EntryTime) {
+                    $("#editDTrue")[0].checked = true;
+                    $("#editEntryTime").datebox("setValue", jsonObj.EntryTime);
+                    document.getElementById("editIdentityCard").value = jsonObj.IdentityCard;
+                    $("#editBirthday").datebox("setValue", jsonObj.Birthday);
+                    $('#editDictEducationID').combobox("setValue", jsonObj.DictEducationID);
+                    document.getElementById("editTel").value = jsonObj.Tel;
+                    document.getElementById("editSalary").value = jsonObj.Salary;
+                    document.getElementById("editNativePlace").value = jsonObj.NativePlace;
+
+                    if (jsonObj.Sex == "女") {
+                        document.getElementById("editSexW").checked = true;
+                    } else {
+                        document.getElementById("editSexM").checked = true;
+                    }
+
+                } else {
+                    $("#editDFalse")[0].checked = true;
+                    document.getElementById("editSexM").checked = false;
+                    document.getElementById("editSexW").checked = false;
+                }
+                $("#divEdit").css("display", "block")
+                   .dialog({
+                       title: '编辑用户',
+                       width: 300,
+                       height: 465,
+                       modal: true,
+                       buttons: [{
+                           text: '保 存',
+                           iconCls: "icon-save",
+                           handler: function () {
+                               saveEditUser();
+                           }
+                       }, {
+                           text: '关 闭',
+                           iconCls: "icon-cancel",
+                           handler: function () {
+                               $("#divEdit").dialog("close");
+                               clearEditUser();
+                           }
+                       }]
+                   });
+            });
+        }
+
+        //保存修改用户
+        function saveEditUser() {
+            //进行基本验证
+            var formData;
+            var reqEles = document.querySelectorAll("#divEdit [required]");
+            var reqElesLength = reqEles.length;
+            for (var i = 0; i < reqElesLength; i++) {
+                if (reqEles[i].value.length == 0) {
+                    $.messager.alert("提示", "用户ID,用户名为必填字段!");
+                    return;
+                }
+            }
+            var pwd = document.getElementById("editUpwd").value;
+            var pwdAgain = document.getElementById("editAgainUpwd").value;
+            //校验密码
+            if (pwd.length != 0 || pwdAgain.length != 0) {
+                if (pwd != pwdAgain) {
+                    $.messager.alert("提示", "如果要修改密码请将【密码】和【确认密码】均填写正确");
+                    return;
+                }
+            }
+            //单独判断角色
+            var dictRole = $("#editDictRole").combobox("getValues");
+            if (dictRole == "") {
+                $.messager.alert("提示", "角色为必选字段,且可以进行多选!");
+                return;
+            }
+            if ($("#editDTrue")[0].checked) {
+                var errInfo = "";
+                //进行详细信息字段校验
+                var entryTime = $("#editEntryTime").datebox("getValue");
+                if (isNaN(Date.parse(entryTime))) {
+                    errInfo += "&nbsp;&nbsp;&nbsp;&nbsp;入职时间<br/>";
+                }
+                var identityCard = document.getElementById("editIdentityCard").value;
+                if (!(/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/).test(identityCard)) {
+                    errInfo += "&nbsp;&nbsp;&nbsp;&nbsp;身份证号码<br/>";
+                }
+                var birthday = $("#editBirthday").datebox("getValue");
+                if (isNaN(Date.parse(birthday))) {
+                    errInfo += "&nbsp;&nbsp;&nbsp;&nbsp;出生日期<br/>";
+                }
+                var dictEducationId = $('#editDictEducationID').combobox("getValue");
+                if (dictEducationId == "") {
+                    errInfo += "&nbsp;&nbsp;&nbsp;&nbsp;学历<br/>";
+                }
+                var salary = document.getElementById("editSalary").value;
+                if (salary != "" && isNaN(salary)) {
+                    errInfo += "&nbsp;&nbsp;&nbsp;&nbsp;月薪<br/>";
+                }
+                if (errInfo.length > 0) {
+                    $.messager.alert("警告", "以下信息未正确填写,无法保存人员信息<br/>" + errInfo);
+                    return;
+                }
+            }
+
+            formData = new FormData();
+            formData.append("ID", document.getElementById("editID").value);
+            formData.append("UID", document.getElementById("editUID").value);
+            formData.append("UName", document.getElementById("editUName").value);
+            formData.append("Upwd", document.getElementById("editUpwd").value);
+            formData.append("Remark", document.getElementById("editRemark").value);
+            formData.append("DictRole", $("#editDictRole").combobox("getValues"));
+            formData.append("DetailTrue", $("#editDTrue")[0].checked ? "1" : "");
+            if ($("#editDTrue")[0].checked) {
+                formData.append("EntryTime", $("#editEntryTime").datebox("getValue"));
+                formData.append("IdentityCard", document.getElementById("editIdentityCard").value);
+                formData.append("Birthday", $("#editBirthday").datebox("getValue"));
+                formData.append("DictEducationID", $('#editDictEducationID').combobox("getValue"));
+                formData.append("Tel", document.getElementById("editTel").value);
+                formData.append("Salary", document.getElementById("editSalary").value);
+                formData.append("NativePlace", document.getElementById("editNativePlace").value);
+                formData.append("Sex", document.getElementById("editSexM").checked ? "男" : "女");
+            }
+            Kx.post("/User/EditUser", formData, function (serData) {
+                if (serData.indexOf("0") == -1) {
+                    $("#tbDataGrid").datagrid("reload");
+                    $("#divEdit").dialog("close");
+                    clearEditUser();
+                } else {
+                    $.messager.alert("提示", serData.split("#")[1]);
+                }
+            });
+        }
+
+        //清楚修改人员信息数据
+        function clearEditUser() {
+            document.getElementById("editID").value = "";
+            document.getElementById("editUID").value = "";
+            document.getElementById("editUName").value = "";
+            document.getElementById("editUpwd").value = "";
+            document.getElementById("editAgainUpwd").value = "";
+            $("#editDictRole").combobox("setValue", "");
+            document.getElementById("editRemark").value = "";
+
+            document.getElementById("editDTrue").checked = false;
+            document.getElementById("editDFalse").checked = false;
+            document.getElementById("editSexM").checked = false;
+            document.getElementById("editSexW").checked = false;
+            $("#editEntryTime").datebox("setValue", "");
+            document.getElementById("editIdentityCard").value = "";
+            $("#editBirthday").datebox("setValue", "");
+            $("#editDictEducationID").combobox("setValue", "");
+            document.getElementById("editTel").value = "";
+            document.getElementById("editSalary").value = "";
+            document.getElementById("editNativePlace").value = "";
+        }
+
+        //删除用户
+        function removeUser(selectedRow) {
+            $.messager.confirm("删除提示", "是否要删除该用户？！", function (result) {
+                if (result) {
+                    Kx.post("/User/RemoveUser", { ID: selectedRow.ID }, function (serverData) {
+                        if (serverData.indexOf(0) == -1) {
+                            $.messager.show({ title: "提示", msg: "该用户删除成功!" });
+                            $("#tbDataGrid").datagrid("reload");
+                        } else {
+                            $.messager.alert("提示", serverData.split("#")[1]);
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects>
+  <object type="OA.WebApp.Controllers.UserController,OA.WebApp" singleton="false">
+    <property name="UserService" ref="UserService"></property>
+  </object>
+</objects>

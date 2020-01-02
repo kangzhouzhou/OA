@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<obejects>
+  <!--创建类中 name为唯一ID,type是完全限定名,所在程序集-->
+  <object name="UserInfoService" type="Sprint.NetDemo.UserInfoSerivce,Sprint.NetDemo">
+    <!-- 属性注入,
+          name对应的属性名称,
+          value注入的属性值,
+          ref 引用哪个object节点 -->
+    <property name="UserName" value="0..0"/>
+    <property name="Age" value="012"/>
+  </object>
+</obejects>

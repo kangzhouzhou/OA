@@ -1,0 +1,10 @@
+D:\Demo\OA\OA.Commmon\bin\Release\OA.Commmon.dll
+D:\Demo\OA\OA.Commmon\bin\Release\OA.Commmon.pdb
+D:\Demo\OA\OA.Commmon\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\Demo\OA\OA.Commmon\bin\Release\log4net.dll
+D:\Demo\OA\OA.Commmon\bin\Release\Memcached.Client.dll
+D:\Demo\OA\OA.Commmon\bin\Release\log4net.xml
+D:\Demo\OA\OA.Commmon\bin\Release\Memcached.Client.xml
+D:\Demo\OA\OA.Commmon\obj\Release\OA.Common.csprojResolveAssemblyReference.cache
+D:\Demo\OA\OA.Commmon\obj\Release\OA.Commmon.dll
+D:\Demo\OA\OA.Commmon\obj\Release\OA.Commmon.pdb

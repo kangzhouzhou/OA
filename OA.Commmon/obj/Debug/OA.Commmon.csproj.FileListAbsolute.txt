@@ -1,0 +1,5 @@
+D:\Demo\OA\OA.Commmon\bin\Debug\OA.Commmon.dll
+D:\Demo\OA\OA.Commmon\bin\Debug\OA.Commmon.pdb
+D:\Demo\OA\OA.Commmon\obj\Debug\OA.Commmon.csprojResolveAssemblyReference.cache
+D:\Demo\OA\OA.Commmon\obj\Debug\OA.Commmon.dll
+D:\Demo\OA\OA.Commmon\obj\Debug\OA.Commmon.pdb

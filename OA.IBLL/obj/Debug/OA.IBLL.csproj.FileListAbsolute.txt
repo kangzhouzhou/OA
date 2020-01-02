@@ -1,0 +1,46 @@
+D:\Demo\OA\OA.IBLL\bin\Debug\OA.IBLL.dll
+D:\Demo\OA\OA.IBLL\bin\Debug\OA.IBLL.pdb
+D:\Demo\OA\OA.IBLL\bin\Debug\OA.DALFactory.dll
+D:\Demo\OA\OA.IBLL\bin\Debug\OA.IDAL.dll
+D:\Demo\OA\OA.IBLL\bin\Debug\OA.Model.dll
+D:\Demo\OA\OA.IBLL\bin\Debug\EntityFramework.dll
+D:\Demo\OA\OA.IBLL\bin\Debug\OA.DALFactory.pdb
+D:\Demo\OA\OA.IBLL\bin\Debug\OA.IDAL.pdb
+D:\Demo\OA\OA.IBLL\bin\Debug\OA.Model.pdb
+D:\Demo\OA\OA.IBLL\bin\Debug\EntityFramework.xml
+D:\Demo\OA\OA.IBLL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\Demo\OA\OA.IBLL\obj\Debug\OA.IBLL.csprojResolveAssemblyReference.cache
+D:\Demo\OA\OA.IBLL\obj\Debug\OA.IBLL.dll
+D:\Demo\OA\OA.IBLL\obj\Debug\OA.IBLL.pdb
+D:\Demo\OA\OA.IBLL\bin\Debug\OA.Commmon.dll
+D:\Demo\OA\OA.IBLL\bin\Debug\Memcached.Client.dll
+D:\Demo\OA\OA.IBLL\bin\Debug\log4net.dll
+D:\Demo\OA\OA.IBLL\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Demo\OA\OA.IBLL\bin\Debug\OA.Commmon.pdb
+D:\Demo\OA\OA.IBLL\bin\Debug\Memcached.Client.xml
+D:\Demo\OA\OA.IBLL\bin\Debug\log4net.xml
+D:\Source Code\OA\OA.IBLL\bin\Debug\OA.IBLL.dll
+D:\Source Code\OA\OA.IBLL\bin\Debug\OA.IBLL.pdb
+D:\Source Code\OA\OA.IBLL\bin\Debug\OA.DALFactory.dll
+D:\Source Code\OA\OA.IBLL\bin\Debug\OA.IDAL.dll
+D:\Source Code\OA\OA.IBLL\bin\Debug\OA.Model.dll
+D:\Source Code\OA\OA.IBLL\bin\Debug\EntityFramework.dll
+D:\Source Code\OA\OA.IBLL\bin\Debug\OA.Commmon.dll
+D:\Source Code\OA\OA.IBLL\bin\Debug\Memcached.Client.dll
+D:\Source Code\OA\OA.IBLL\bin\Debug\log4net.dll
+D:\Source Code\OA\OA.IBLL\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Source Code\OA\OA.IBLL\bin\Debug\OA.DALFactory.pdb
+D:\Source Code\OA\OA.IBLL\bin\Debug\OA.IDAL.pdb
+D:\Source Code\OA\OA.IBLL\bin\Debug\OA.Model.pdb
+D:\Source Code\OA\OA.IBLL\bin\Debug\EntityFramework.xml
+D:\Source Code\OA\OA.IBLL\bin\Debug\OA.Commmon.pdb
+D:\Source Code\OA\OA.IBLL\bin\Debug\Memcached.Client.xml
+D:\Source Code\OA\OA.IBLL\bin\Debug\log4net.xml
+D:\Source Code\OA\OA.IBLL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\Source Code\OA\OA.IBLL\obj\Debug\OA.IBLL.dll
+D:\Source Code\OA\OA.IBLL\obj\Debug\OA.IBLL.pdb
+D:\Source Code\OA\OA.IBLL\bin\Debug\OA.DALFactory.dll.config
+D:\Source Code\OA\OA.IBLL\bin\Debug\OA.IDAL.dll.config
+D:\Source Code\OA\OA.IBLL\obj\Debug\OA.IBLL.csprojAssemblyReference.cache
+D:\Source Code\OA\OA.IBLL\obj\Debug\OA.IBLL.csproj.CoreCompileInputs.cache
+D:\Source Code\OA\OA.IBLL\obj\Debug\OA.IBLL.csproj.CopyComplete

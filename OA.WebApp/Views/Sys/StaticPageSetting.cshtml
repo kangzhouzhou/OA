@@ -1,0 +1,160 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>静态页面设计器</title>
+    <script src="~/Scripts/KxScripts/KxBase.js"></script>
+    <script src="~/Scripts/KxScripts/KxAjax.js"></script>
+
+    <script src="~/Scripts/jquery-1.11.3.js"></script>
+    <script src="~/Scripts/jquery.easyui-1.4.5.js"></script>
+    <script src="~/Scripts/locale/easyui-lang-zh_CN.js"></script>
+    <link href="~/Content/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/themes/default/easyui.css" rel="stylesheet" />
+</head>
+<body>
+    <div style="width:870px;margin:0px auto;">
+        <div style="float:left;width:470px;margin-top:10px;">
+            <table style="border-collapse:separate; border-spacing:5px 5px;">
+                <tr>
+                    <td>标&nbsp;题</td>
+                    <td><input id="txtTitle"type="text" style="width:405px;" /></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:text-top">正&nbsp;文</td>
+                    <td><textarea id="txtContent" rows="20" cols="55"></textarea></td>
+                </tr>
+            </table>
+        </div>
+        <div id="divImg" style="float:left;width:400px;margin-top:10px;">
+            <table style="border-collapse:separate; border-spacing:5px 18px;margin-top:-10px;">
+                <tr>
+                    <td>图片1：</td>
+                    <td><input id="fileOne" type="file"/></td>
+                </tr>
+                <tr>
+                    <td>图片1描述：</td>
+                    <td><input id="fileMemoOne" type="text" class="inputMemo"/></td>
+                </tr>
+                <tr>
+                    <td>图片2：</td>
+                    <td><input  id="fileTwo" type="file" /></td>
+                </tr>
+                <tr>
+                    <td>图片2描述：</td>
+                    <td><input  id="fileMemoTwo" type="text"class="inputMemo" /></td>
+                </tr>
+                <tr>
+                    <td>图片3：</td>
+                    <td><input  id="fileThree" type="file" /></td>
+                </tr>
+                <tr>
+                    <td>图片3描述：</td>
+                    <td><input id="fileMemoThree" type="text" class="inputMemo"/></td>
+                </tr>
+                <tr>
+                    <td>图片4：</td>
+                    <td><input id="fileFour" type="file" /></td>
+                </tr>
+                <tr>
+                    <td>图片4描述：</td>
+                    <td><input id="fileMemoFour" type="text" class="inputMemo"/></td>
+                </tr>
+            </table>
+        </div>
+        <div style="clear:both">
+            <div style="margin:0px auto;width:200px;">
+                <input id="btnSaveActivity" type="button" value="保   存" />
+                <input id="btnSaveActivityImg" type="button" value="上    传" style="margin-left:10px;"/>
+                <input id="btnClearActivity" type="button" value="清   除" style="margin-left:10px;" />
+            </div>
+        </div>
+    </div>
+    <style type="text/css">
+        .inputMemo {
+            width:253px;
+            border:1px solid #808080;
+        }
+        [type=file] {
+            border:1px solid #808080;
+        }
+    </style>
+    <script type="text/javascript">
+        Kx.ready(function () {
+            $("#btnClearActivity").click(clearActivityHandler);
+            $("#btnSaveActivity").click(saveActivityHandler);
+            $("#btnSaveActivityImg").click(saveActivityImgHandler);
+            //进行校验
+            $("[type=file]").change(selectFile);
+        });
+
+        function clearActivityHandler() {
+            $("#txtContent").val("");
+            $("[type=text],[type=file]").val("");
+        }
+
+        //进行保存文本
+        function saveActivityHandler() {
+            //如果没有保存图片则先保存图片
+            if (!$("#btnSaveActivityImg").attr("disabled")) {
+                saveActivityImgHandler();
+            }
+            Kx.mask("正在保存文本信息，请稍等...");
+            Kx.post("/Sys/SaveActivity", {
+                title: $("#txtTitle").val(),
+                content: $("#txtContent").val()
+            }, function (serData) {
+                Kx.unMask();
+                if (serData == "1") {
+                    $("#txtTitle").attr("readonly", true);
+                    $("#txtContent").attr("readonly", true);
+                    $("#btnSaveActivity").attr("disabled", true);
+                    $("#btnClearActivity").attr("disabled", true);
+                } else {
+                    $.messager.alert("提示", "活动文档保存失败!");
+                }
+            });
+        }
+
+        //进行保存图片
+        function saveActivityImgHandler() {
+            Kx.mask("图片上传中，请稍等...");
+            var fileArray = $("#divImg [type=file]");
+            var fileMemoArray = $("#divImg [type=text]");
+            var formDataObj = new FormData();
+            for (var i = 0; i < fileArray.length; i++) {
+                formDataObj.append("file" + i, fileArray[i].files[0]);
+                formDataObj.append("file" + i + "Memo", fileMemoArray[i].value);
+            }
+            Kx.post("/Sys/SaveImg", formDataObj, function (serData) {
+                Kx.unMask();
+                if (serData != "1") {
+                    $.messager.alert("提示", "图片上传失败!");
+                } else {
+                    $("#btnSaveActivityImg").attr("disabled", true);
+                    $("#divImg [type=file]").attr("disabled", true);
+                    $("#divImg [type=text]").attr("readonly", true);
+                }
+            }, false);
+        }
+
+        //选择文件进行校验
+        function selectFile(event) {
+            var e = event || window.event;
+            var fileEle = e.target || e.srcElement;
+            var fileName=fileEle.files[0].name;
+            var fileExtension = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length).toUpperCase();
+            if (fileExtension != "BMP" && fileExtension != "JPG" && fileExtension != "JPEG" && fileExtension != "PNG" && fileExtension != "GIF") {
+                $.messager.alert("提示", "图片格式验证错误，请选择图片文件！");
+                //清除选中的文件
+                $(fileEle).val("");
+            }
+        }
+    </script>
+</body>
+</html>

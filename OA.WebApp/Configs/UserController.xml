@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects>
+  <object  type="OA.WebApp.Controllers.UserController,OA.WebApp" singleton="false">
+    <property name="DictMenuService" ref="MenuSerivce"></property>
+    <property name="DictUserService" ref="UserService"></property>
+    <property name="DictEducationService" ref="EducationService"></property>
+    <property name="DictUserInfoService" ref="UserInfoService"></property>
+    <property name="DictRoleService" ref="RoleService"></property>
+  </object>
+</objects>

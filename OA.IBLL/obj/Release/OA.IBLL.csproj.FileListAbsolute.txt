@@ -1,0 +1,14 @@
+D:\Demo\OA\OA.IBLL\bin\Release\OA.IBLL.dll
+D:\Demo\OA\OA.IBLL\bin\Release\OA.IBLL.pdb
+D:\Demo\OA\OA.IBLL\bin\Release\OA.DALFactory.dll
+D:\Demo\OA\OA.IBLL\bin\Release\OA.IDAL.dll
+D:\Demo\OA\OA.IBLL\bin\Release\OA.Model.dll
+D:\Demo\OA\OA.IBLL\bin\Release\EntityFramework.dll
+D:\Demo\OA\OA.IBLL\bin\Release\OA.DALFactory.pdb
+D:\Demo\OA\OA.IBLL\bin\Release\OA.IDAL.pdb
+D:\Demo\OA\OA.IBLL\bin\Release\OA.Model.pdb
+D:\Demo\OA\OA.IBLL\bin\Release\EntityFramework.xml
+D:\Demo\OA\OA.IBLL\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\Demo\OA\OA.IBLL\obj\Release\OA.IBLL.csprojResolveAssemblyReference.cache
+D:\Demo\OA\OA.IBLL\obj\Release\OA.IBLL.dll
+D:\Demo\OA\OA.IBLL\obj\Release\OA.IBLL.pdb

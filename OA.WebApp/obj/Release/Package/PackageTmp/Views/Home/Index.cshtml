@@ -1,0 +1,81 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <script src="/Scripts/jquery.min.js"></script>
+    <script src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <script src="/Scripts/jquery.easyui.min.js"></script>
+
+    <link href="/Content/themes/icon.css" rel="stylesheet" />
+    <link href="/Content/themes/default/easyui.css" rel="stylesheet" />
+    <link href="/Content/Js/Home.css" rel="stylesheet" />
+    <title>ItCast_OA个人门户</title>
+    <style>
+        .titleTxt {
+            font: bold 20px 宋体;
+            color: blue;
+            /*margin 上 右 下 左*/
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        $(function () {
+            bindClickEvent();
+        });
+
+        //菜单点击事件
+        function bindClickEvent() {
+            $(".detailLink").click(function () {
+                var aEle = this;
+                //判断是否已经打开页签
+                if ($("#divTabs").tabs("exists", aEle.innerText)) {
+                    $("#divTabs").tabs("select", aEle.innerText);
+                } else {
+                    $("#divTabs").tabs("add", {
+                        title: aEle.innerText,
+                        closable: true,
+                        content: "<div style='overflow: hidden;width: 100%; height: 100%;'><iframe src='" + aEle.href + "' style='width: 100%; height: 100%;'></iframe></div>"
+                    });
+                }
+            });
+        }
+    </script>
+</head>
+<body class="easyui-layout">
+    @* north 北(上北) *@
+    <div id="divNorth" data-options="region:'north'@*,title:'North Title'*@,split:true" style="height:87px;background:url(Content/Images/bg3.png)">
+        <img src="/Content/Images/logo.gif" style="margin-top: 5px;" />
+        <span class="titleTxt">ItCast_OA办公系统</span>
+    </div>
+
+    @* west 西(左西)*@
+    <div id="divWeat" data-options="region:'west',title:'菜单栏',split:true" style="width: 180px;">
+        @*accordion Div *@
+        <div id="divMenuCotent" class="easyui-accordion" style="width: 100%; height: 100%; padding: 2px;">
+            <div data-options="title:'角色管理'" style="padding: 5px;">
+                <a href="javascript:void(0)" class="detailLink">角色管理</a>
+            </div>
+            <div data-options="title:'用户管理'" style="padding: 5px;">
+                <a href="/User/Index" onclick="return false;"  class="detailLink">用户管理</a>
+            </div>
+        </div>
+    </div>
+
+    @*<!-- east 东(右东) -->
+    <div data-options="region:'east',title:'East',split:true" style="width:100px;"></div>*@
+
+    @* south 南(下南) *@
+    <div id="divSouth" data-options="region:'south'@*,title:'South Title'*@,split:true" style="height:60px;"></div>
+
+    <div id="divCenter" data-options="region:'center'" style="padding: 5px; background: #eee;">
+        <div id="divTabs" class="easyui-tabs" style="width: 100%; height: 100%">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+D:\Demo\OA\Sprint.NetDemo\bin\Debug\Sprint.NetDemo.exe.config
+D:\Demo\OA\Sprint.NetDemo\bin\Debug\Sprint.NetDemo.exe
+D:\Demo\OA\Sprint.NetDemo\bin\Debug\Sprint.NetDemo.pdb
+D:\Demo\OA\Sprint.NetDemo\bin\Debug\Spring.Core.dll
+D:\Demo\OA\Sprint.NetDemo\obj\Debug\Sprint.NetDemo.Form1.resources
+D:\Demo\OA\Sprint.NetDemo\obj\Debug\Sprint.NetDemo.Properties.Resources.resources
+D:\Demo\OA\Sprint.NetDemo\obj\Debug\Sprint.NetDemo.csproj.GenerateResource.Cache
+D:\Demo\OA\Sprint.NetDemo\obj\Debug\Sprint.NetDemo.exe
+D:\Demo\OA\Sprint.NetDemo\obj\Debug\Sprint.NetDemo.pdb
+D:\Demo\OA\Sprint.NetDemo\bin\Debug\Common.Logging.dll
+D:\Demo\OA\Sprint.NetDemo\bin\Debug\Spring.xml
+D:\Demo\OA\Sprint.NetDemo\obj\Debug\Sprint.NetDemo.csprojResolveAssemblyReference.cache

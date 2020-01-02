@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>测试内容</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div style="float:left;width:600px;margin-left:70px;margin-right:10px;">
+        <div>
+            <img id="imgActivity" style="width:600px;height:400px;" src="/StaticPage/Imgs/84d50f86-beb4-4b20-860c-39b9ca2409d1.jpg" data-index="0" />
+            <div class="imgIndex" style="left:560px">1</div>
+            <div class="imgIndex" style="left:585px">2</div>
+            <div class="imgIndex" style="left:610px">3</div>
+            <div class="imgIndex" style="left:635px">4</div>
+			<div style="width:100px;margin:0px auto;"><input id="btnDownImg" type="button" value="下载图片"/></div>
+			<div><a href="http://localhost:48730/Sys/DownImg/7">下载图片</a></div>
+			<form method="get" action="http://localhost:48730/Sys/DownImg/7">
+			<input type="submit" value="123"></form>
+        </div>
+    </div>
+    <div style="float:left;width:600px;height:100px;">
+        <div style="font-size:20px;margin:10px 0px 10px 10px;text-align:center;">测试内容</div>
+        <div style="margin-left:10px;">测试内容正文</div>
+    </div>
+    <script src="../../Scripts/KxScripts/KxBase.js"></script>
+    <script src="../../Scripts/KxScripts/KxAjax.js"></script>
+
+    <script src="../../Scripts/jquery-1.11.3.js"></script>
+    <script src="../../Scripts/jquery.easyui-1.4.5.js"></script>
+    <script src="../../Scripts/locale/easyui-lang-zh_CN.js"></script>
+    <link href="../../Content/themes/icon.css" rel="stylesheet" />
+    <link href="../../Content/themes/default/easyui.css" rel="stylesheet" />
+    <style type="text/css">
+        .imgIndex {
+            position: absolute;
+            top: 350px;
+            border: 1px solid blue;
+            width: 20px;
+            text-align: center;
+            background-color: blue;
+        }
+    </style>
+    <script type="text/javascript">
+        var imgPath = null, intervalId;
+        Kx.ready(function () {
+            getImgPath();
+            $(".imgIndex").hover(divMouseOverHandler, divMouseOutHandler);
+			$("#btnDownImg").click(downImgHandler);
+        });
+
+        //获取图片路径信息
+        function getImgPath() {
+            Kx.post("/Sys/GetImgPath", { pageId:7 }, function (serData) {
+                var serDataArray = JSON.parse(serData);
+                if (serDataArray == null)
+                    return;
+                imgPath = serDataArray;
+                //开启展示图片
+                intervalId = setInterval(imgChange, 1000);
+            });
+        }
+
+        function imgChange() {
+            var indexValue = $("#imgActivity").attr("data-index");
+            if (indexValue == 3) {
+                indexValue = 0;
+            } else {
+                indexValue = parseInt(indexValue);
+                ++indexValue;
+            }
+            $("#imgActivity").attr("src", imgPath[indexValue].ImgPath).attr("data-index", indexValue);
+        }
+
+        function divMouseOverHandler() {
+            if (intervalId) {
+                clearInterval(intervalId);
+            }
+            var divText = $(this).css("background-color", "red").text();
+            var imgIndex = parseInt(divText) - 1;
+            $("#imgActivity").attr("src", imgPath[imgIndex].ImgPath).attr("data-index", imgIndex);
+        }
+
+        function divMouseOutHandler() {
+            $(this).css("background-color", "blue");
+            intervalId = setInterval(imgChange, 1000);
+        }
+		
+		function downImgHandler() {
+			var form=$("<form>");//定义form表单,通过表单发送请求
+			form.attr("style","display:none");//设置为不显示
+			form.attr("target","");
+			form.attr("method","get");//设置请求类型  
+			form.attr("action","../../Sys/DownImg/7");//设置请求路径
+			$("body").append(form);//添加表单到页面(body)中
+			form.submit();
+		}
+    </script>
+</body>
+</html>

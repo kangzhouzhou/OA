@@ -1,0 +1,58 @@
+D:\Demo\OA\OA.Model\bin\Debug\OA.Model.dll
+D:\Demo\OA\OA.Model\bin\Debug\OA.Model.pdb
+D:\Demo\OA\OA.Model\bin\Debug\EntityFramework.dll
+D:\Demo\OA\OA.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Demo\OA\OA.Model\bin\Debug\EntityFramework.xml
+D:\Demo\OA\OA.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Demo\OA\OA.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\Demo\OA\OA.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Demo\OA\OA.Model\obj\Debug\OA.Model.dll
+D:\Demo\OA\OA.Model\obj\Debug\OA.Model.pdb
+D:\Demo\OA\OA.Model\obj\Debug\OA.Model.csprojResolveAssemblyReference.cache
+D:\Demo\OA\OA.Model\bin\Debug\OA.Commmon.dll
+D:\Demo\OA\OA.Model\bin\Debug\Memcached.Client.dll
+D:\Demo\OA\OA.Model\bin\Debug\log4net.dll
+D:\Demo\OA\OA.Model\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Demo\OA\OA.Model\bin\Debug\OA.Commmon.pdb
+D:\Demo\OA\OA.Model\bin\Debug\Memcached.Client.xml
+D:\Demo\OA\OA.Model\bin\Debug\log4net.xml
+D:\Source Code\OA\OA.Model\bin\Debug\OA.Model.dll
+D:\Source Code\OA\OA.Model\bin\Debug\OA.Model.pdb
+D:\Source Code\OA\OA.Model\bin\Debug\EntityFramework.dll
+D:\Source Code\OA\OA.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Source Code\OA\OA.Model\bin\Debug\OA.Commmon.dll
+D:\Source Code\OA\OA.Model\bin\Debug\Memcached.Client.dll
+D:\Source Code\OA\OA.Model\bin\Debug\log4net.dll
+D:\Source Code\OA\OA.Model\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Source Code\OA\OA.Model\bin\Debug\OA.Commmon.pdb
+D:\Source Code\OA\OA.Model\bin\Debug\EntityFramework.xml
+D:\Source Code\OA\OA.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Source Code\OA\OA.Model\bin\Debug\Memcached.Client.xml
+D:\Source Code\OA\OA.Model\bin\Debug\log4net.xml
+D:\Source Code\OA\OA.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\Source Code\OA\OA.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Source Code\OA\OA.Model\obj\Debug\OA.Model.dll
+D:\Source Code\OA\OA.Model\obj\Debug\OA.Model.pdb
+D:\Source Code\OA\OA.Model\obj\Debug\OA.Model.csprojAssemblyReference.cache
+D:\Source Code\OA\OA.Model\obj\Debug\OA.Model.csproj.CoreCompileInputs.cache
+D:\Source Code\OA\OA.Model\obj\Debug\OA.Model.csproj.CopyComplete
+F:\OA\OA.Model\bin\Debug\OA.Model.dll
+F:\OA\OA.Model\bin\Debug\OA.Model.pdb
+F:\OA\OA.Model\bin\Debug\EntityFramework.dll
+F:\OA\OA.Model\bin\Debug\EntityFramework.SqlServer.dll
+F:\OA\OA.Model\bin\Debug\OA.Commmon.dll
+F:\OA\OA.Model\bin\Debug\Memcached.Client.dll
+F:\OA\OA.Model\bin\Debug\log4net.dll
+F:\OA\OA.Model\bin\Debug\ICSharpCode.SharpZipLib.dll
+F:\OA\OA.Model\bin\Debug\OA.Commmon.pdb
+F:\OA\OA.Model\bin\Debug\EntityFramework.xml
+F:\OA\OA.Model\bin\Debug\EntityFramework.SqlServer.xml
+F:\OA\OA.Model\bin\Debug\Memcached.Client.xml
+F:\OA\OA.Model\bin\Debug\log4net.xml
+F:\OA\OA.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+F:\OA\OA.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+F:\OA\OA.Model\obj\Debug\OA.Model.csprojAssemblyReference.cache
+F:\OA\OA.Model\obj\Debug\OA.Model.csproj.CoreCompileInputs.cache
+F:\OA\OA.Model\obj\Debug\OA.Model.csproj.CopyComplete
+F:\OA\OA.Model\obj\Debug\OA.Model.dll
+F:\OA\OA.Model\obj\Debug\OA.Model.pdb

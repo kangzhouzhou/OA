@@ -1,0 +1,11 @@
+D:\Demo\OA\OA.Model\bin\Release\OA.Model.dll
+D:\Demo\OA\OA.Model\bin\Release\OA.Model.pdb
+D:\Demo\OA\OA.Model\bin\Release\EntityFramework.dll
+D:\Demo\OA\OA.Model\bin\Release\EntityFramework.SqlServer.dll
+D:\Demo\OA\OA.Model\bin\Release\EntityFramework.xml
+D:\Demo\OA\OA.Model\bin\Release\EntityFramework.SqlServer.xml
+D:\Demo\OA\OA.Model\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\Demo\OA\OA.Model\bin\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Demo\OA\OA.Model\obj\Release\OA.Model.csprojResolveAssemblyReference.cache
+D:\Demo\OA\OA.Model\obj\Release\OA.Model.dll
+D:\Demo\OA\OA.Model\obj\Release\OA.Model.pdb

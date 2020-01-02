@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" charset="utf-8"/>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div id="divContainer" data-parentId="@ViewBag.ParentID">
+    </div>
+    @RenderBody()
+    <script src="~/Scripts/KxScripts/KxBase.js"></script>
+    <script src="~/Scripts/KxScripts/KxAjax.js"></script>
+    
+    <script src="~/Scripts/jquery-1.11.3.js"></script>
+    <script src="~/Scripts/jquery.easyui-1.4.5.js"></script>
+    <script src="~/Scripts/locale/easyui-lang-zh_CN.js"></script>
+    <link href="~/Content/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/Scripts/Css/formCss.css" rel="stylesheet" />
+    <script type="text/javascript">
+            //模拟JQuery的ready事件
+            //如果没有DOMContentLoaded事件
+        if (document.addEventListene) {
+            document.addEventListene("DOMContentLoaded", LoadMenu);
+            } else {
+                document.onreadystatechange = function () {
+                    if (document.readyState == "interactive" || document.readyState == "complete") {
+                        document.onreadystatechange = null;
+                        //执行脚本
+                        LoadMenu();
+                    }
+                }
+            }
+
+        function LoadMenu() {
+            Kx.post("@ViewBag.Path", { parentId: $("#divContainer").attr("data-parentId") }, function (serverData) {
+                var jsonObj = JSON.parse(serverData);
+                if (jsonObj.state == "0") {
+                    $.messager.alert("提示", "您还未分配任何权限,请联系管理员!");
+                } else {
+                    var dataLength = jsonObj.data.length;
+                    //先给tabs注册options否则tabs无法找到options选项
+                    $('#divContainer').tabs({
+                        border: false,
+                        fit: true
+                    });
+                    for (var i = 0; i < dataLength; i++) {
+                        $('#divContainer').tabs('add', {
+                            title: jsonObj.data[i].MenuName,
+                            href: jsonObj.data[i].MenuPath,
+                            cache: true,
+                            height: 499,
+                            closable: false,
+                            selected: false,
+                            tools: [{
+                                iconCls: 'icon-mini-refresh'
+                            }]
+                        });
+                    }
+                    // 获取所有标签页
+                    var tabs = $('#divContainer').tabs("tabs");
+                    //默认选中第一个标签页
+                    if (tabs.length >= 1) {
+                        $('#divContainer').tabs("select", 0);
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>

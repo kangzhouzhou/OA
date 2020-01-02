@@ -1,0 +1,320 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="/Scripts/jquery.easyui.min.js"></script>
+    <script src="/Scripts/easyui-lang-zh_CN.js"></script>
+    <link href="/Content/themes/icon.css" rel="stylesheet" />
+    <link href="/Content/themes/default/easyui.css" rel="stylesheet" />
+
+    <script type="text/ecmascript">
+        $(function () {
+            $("#divAdd").css("visibility", "hidden");
+            $("#editDiv").css("visibility", "hidden");
+            $("#btnSearch").click(function () {
+                var searchData = {
+                    name: $("#txtSearchName").val(),
+                    remark: $("#txtSearchRemark").val()
+                };
+                loadData(searchData);
+            });
+            loadData();
+        });
+
+        //初始加载用户列表
+        function loadData(paras) {
+            $("#tdEle").datagrid({
+                url: '/User/GetUserInfoList',
+                title: '用户数据表格',
+                width: 700,
+                height: 400,
+                fitColumns: true, //列自适应
+                nowrap: false,
+                idField: 'ID',//主键列的列明
+                loadMsg: '正在加载用户的信息...',
+                pagination: true,//是否有分页
+                singleSelect: false,//是否单行选择
+                pageSize: 5,//页大小，一页多少条数据
+                pageNumber: 1,//当前页，默认的
+                pageList: [5, 10, 15],
+                queryParams: paras,
+                remoteSort: false,
+                columns: [[
+                    { field: "Checked", checkbox: true, width: 50 },
+                    {
+                        field: "ID", title: "编号", width: 100, sortable: true, sorter: function (a, b) {
+                            var aValue = parseInt(a);
+                            var bValue = parseInt(b);
+                            return (aValue > bValue ? 1 : -1);
+                        }
+                    },
+                    { field: "UName", title: "用户名", width: 100 },
+                    { field: "Upwd", title: "密码", width: 100 },
+                    {
+                        field: "SubTime", title: "创建时间", width: 150, formatter: function (value, rowData, rowIndex) {
+                            var date = new Date(parseInt(value.match(/\d+/)));
+                            return date.Format("yyyy-MM-dd hh:mm:ss");
+                        }
+                    },
+                    { field: "Remark", title: "备注", width: 100 },
+                    { field: "Sort", title: "排序", width: 80 }
+                ]],
+                toolbar: [
+                    {
+                        iconCls: "icon-add", text: "增加用户", handler: function () {
+                            showAddDiv();
+                        }
+                    },
+                    {
+                        iconCls: "icon-edit", text: "编辑用户", handler: function () {
+                            showEditDiv();
+                        }
+                    },
+                    {
+                        iconCls: "icon-remove", text: "删除用户", handler: function () {
+                            deleteUser();
+                        }
+                    },
+                ]
+            });
+        }
+
+        //在原型上进行注册格式化
+        Date.prototype.Format = function (fmt) { //author: meizz 
+            var o = {
+                "M+": this.getMonth() + 1, //月份 
+                "d+": this.getDate(), //日 
+                "h+": this.getHours(), //小时 
+                "m+": this.getMinutes(), //分 
+                "s+": this.getSeconds(), //秒 
+                "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+                "S": this.getMilliseconds() //毫秒 
+            };
+            if (/(y+)/.test(fmt))
+                fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            for (var k in o)
+                if (new RegExp("(" + k + ")").test(fmt))
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+            return fmt;
+        }
+
+        //删除选中的行
+        function deleteUser() {
+            var selectedRows = $("#tdEle").datagrid("getSelections");
+            if (!selectedRows.length)
+                return;
+            $.messager.confirm("删除提示", "确定删除选中的用户信息?", function (r) {
+                if (r) {
+                    var strId = "";
+                    //遍历所选择的行的ID
+                    $.each(selectedRows, function (index, ele) {
+                        strId += ele.ID + ",";
+                    });
+                    strId = strId.substr(0, strId.length - 1);
+                    $.post("/User/UserAction", {
+                        "action": "delete",
+                        "id": strId
+                    }, function (serverData) {
+                        if (serverData) {
+                            $.messager.show({ title: "提示", msg: "删除成功!", showType: 'show' });
+                            //使用该方法保持当前页
+                            $("#tdEle").datagrid("reload");
+                            //清除所有的选择。
+                            $("#tdEle").datagrid("clearSelections");
+                        } else {
+                            $.messager.alert("删除失败!");
+                        }
+                    });
+                }
+            });
+        }
+
+        //显示增加用户界面
+        function showAddDiv() {
+            $("#divAdd").css("visibility", "visible");
+            $("#divAdd").dialog({
+                title: "增加用户",
+                width: 300,
+                height: 200,
+                collapsible: true,//可折叠
+                resizable: true,//可缩放
+                modal: true,     //必须有该属性,否没有蒙板层
+                buttons: [
+                    {
+                        text: "增加",
+                        iconCls: "icon-ok",
+                        handler: function () {
+                            addUser();
+                        }
+                    }, {
+                        text: "关闭",
+                        iconCls: "icon-cancel",
+                        handler: function () {
+                            $("#divAdd").dialog("close");
+                        }
+                    }
+                ]
+            });
+        }
+
+        function addUser() {
+            $.post("/User/UserAction", {
+                "action": "add",
+                "UName": $("[name=UName]").val(),
+                "Upwd": $("[name='Upwd']").val(),
+                "Remark": $("[name=Remark]").val(),
+                "Sort": $("[name=Sort]").val()
+            }, function (serverData) {
+                if (serverData == "ok") {
+                    $("#divAdd").dialog("close");
+                    $("#tdEle").datagrid("reload");
+                    $("input[type=text]").val("");
+                } else {
+                    $.messager.alert("提示", "增加失败!");
+                }
+            });
+        }
+
+        function showEditDiv() {
+            var selectArray = $("#tdEle").datagrid("getSelections");
+            if (!selectArray.length)
+                return;
+            //提取第一行数据
+            $("#editId").val(selectArray[0].ID);
+            $("#editName").val(selectArray[0].UName);
+            $("#editPwd").val(selectArray[0].Upwd);
+            $("#editRemark").val(selectArray[0].Remark);
+            $("#editSort").val(selectArray[0].Sort);
+            $("#editDiv")
+                .css("visibility", "visible")
+                .dialog({
+                    title: "编辑用户",
+                    width: 300,
+                    height: 200,
+                    collapsible: true,//可折叠
+                    resizable: true,//可缩放
+                    modal: true,     //必须有该属性,否没有蒙板层
+                    buttons: [{
+                        text: "保存",
+                        iconCls: "icon-save",
+                        handler: function () {
+                            $.post("/User/UserAction", {
+                                "action": "edit",
+                                "ID": $("#editId").val(),
+                                "UName": $("#editName").val(),
+                                "Upwd": $("#editPwd").val(),
+                                "Remark": $("#editRemark").val(),
+                                "Sort": $("#editSort").val()
+                            }, function (serverData) {
+                                if (serverData == "ok") {
+                                    $.messager.alert("提示", "修改成功!");
+                                    $("#tdEle").datagrid("reload");
+                                    $("#editDiv").dialog("close");
+                                } else {
+                                    $.messager.alert("提示", "修改失败!");
+                                }
+                                $("#tdEle").datagrid("clearSelections");
+                            });
+                        }
+                    }, {
+                        text: "关闭",
+                        iconCls: "icon-cancel",
+                        handler: function () {
+                            $("#tdEle").datagrid("clearSelections");
+                            $("#editDiv").dialog("close");
+                        }
+                    }]
+                });
+        }
+    </script>
+</head>
+<body>
+    <div>
+        用户名:<input type="text" id="txtSearchName" />&nbsp;&nbsp;备注<input type="text" id="txtSearchRemark" /><a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" id="btnSearch">搜索</a>
+        <table id="tdEle"></table>
+    </div>
+    <div id="divAdd">
+        <table>
+            <tr>
+                <td>用户名:</td>
+                <td>
+                    <input type="text" name="UName" /></td>
+            </tr>
+            <tr>
+                <td>密码:</td>
+                <td>
+                    <input type="text" name="Upwd" /></td>
+            </tr>
+            <tr>
+                <td>备注:&#13;&#13;&#13;&#13;&#13;</td>
+                <td>
+                    <input type="text" name="Remark" /></td>
+            </tr>
+            <tr>
+                <td>排序:</td>
+                <td>
+                    <input type="text" name="Sort" /></td>
+            </tr>
+        </table>
+
+        <div id="editDiv">
+            <input type="hidden" id="editId" name="id" />
+            <table>
+                <tr>
+                    <td>用户名:</td>
+                    <td>
+                        <input type="text" name="UName" id="editName" /></td>
+                </tr>
+                <tr>
+                    <td>密码:</td>
+                    <td>
+                        <input type="text" name="Upwd" id="editPwd" /></td>
+                </tr>
+                <tr>
+                    <td>备注:</td>
+                    <td>
+                        <input type="text" name="Remark" id="editRemark" /></td>
+                </tr>
+                <tr>
+                    <td>排序:</td>
+                    <td>
+                        <input type="text" name="Sort" id="editSort" /></td>
+                </tr>
+            </table>
+        </div>
+        @*<!-- MVC Ajax 方式 -->
+        @using (Ajax.BeginForm("UserAction", "UserInfo", new { }, new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterAdd" }, new { id = "addForm" }))
+        {
+            <table>
+                <tr>
+                    <td>用户名:</td>
+                    <td>
+                        <input type="text" name="UName" /></td>
+                </tr>
+                <tr>
+                    <td>密码:</td>
+                    <td>
+                        <input type="text" name="Upwd" /></td>
+                </tr>
+                <tr>
+                    <td>备注:</td>
+                    <td>
+                        <input type="text" name="Remark" /></td>
+                </tr>
+                <tr>
+                    <td>排序:</td>
+                    <td>
+                        <input type="text" name="Sort" /></td>
+                </tr>
+            </table>
+        }*@
+    </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+D:\Demo\OA\OA.WebApp\bin\OA.WebApp.dll
+D:\Demo\OA\OA.WebApp\bin\OA.WebApp.pdb
+D:\Demo\OA\OA.WebApp\bin\Antlr3.Runtime.dll
+D:\Demo\OA\OA.WebApp\bin\EntityFramework.dll
+D:\Demo\OA\OA.WebApp\bin\EntityFramework.SqlServer.dll
+D:\Demo\OA\OA.WebApp\bin\Microsoft.Web.Infrastructure.dll
+D:\Demo\OA\OA.WebApp\bin\Newtonsoft.Json.dll
+D:\Demo\OA\OA.WebApp\bin\OA.BLL.dll
+D:\Demo\OA\OA.WebApp\bin\OA.IBLL.dll
+D:\Demo\OA\OA.WebApp\bin\OA.Model.dll
+D:\Demo\OA\OA.WebApp\bin\System.Net.Http.Formatting.dll
+D:\Demo\OA\OA.WebApp\bin\System.Web.Http.dll
+D:\Demo\OA\OA.WebApp\bin\System.Web.Http.WebHost.dll
+D:\Demo\OA\OA.WebApp\bin\System.Web.Mvc.dll
+D:\Demo\OA\OA.WebApp\bin\System.Web.Optimization.dll
+D:\Demo\OA\OA.WebApp\bin\System.Web.Providers.dll
+D:\Demo\OA\OA.WebApp\bin\System.Web.Razor.dll
+D:\Demo\OA\OA.WebApp\bin\System.Web.WebPages.Deployment.dll
+D:\Demo\OA\OA.WebApp\bin\System.Web.WebPages.dll
+D:\Demo\OA\OA.WebApp\bin\System.Web.WebPages.Razor.dll
+D:\Demo\OA\OA.WebApp\bin\WebGrease.dll
+D:\Demo\OA\OA.WebApp\bin\OA.IDAL.dll
+D:\Demo\OA\OA.WebApp\bin\OA.DALFactory.dll
+D:\Demo\OA\OA.WebApp\bin\OA.BLL.pdb
+D:\Demo\OA\OA.WebApp\bin\OA.IBLL.pdb
+D:\Demo\OA\OA.WebApp\bin\OA.Model.pdb
+D:\Demo\OA\OA.WebApp\bin\EntityFramework.xml
+D:\Demo\OA\OA.WebApp\bin\EntityFramework.SqlServer.xml
+D:\Demo\OA\OA.WebApp\bin\Newtonsoft.Json.xml
+D:\Demo\OA\OA.WebApp\bin\System.Net.Http.Formatting.xml
+D:\Demo\OA\OA.WebApp\bin\System.Web.Http.xml
+D:\Demo\OA\OA.WebApp\bin\System.Web.Http.WebHost.xml
+D:\Demo\OA\OA.WebApp\bin\System.Web.Mvc.xml
+D:\Demo\OA\OA.WebApp\bin\System.Web.Razor.xml
+D:\Demo\OA\OA.WebApp\bin\System.Web.WebPages.xml
+D:\Demo\OA\OA.WebApp\bin\System.Web.WebPages.Deployment.xml
+D:\Demo\OA\OA.WebApp\bin\System.Web.WebPages.Razor.xml
+D:\Demo\OA\OA.WebApp\bin\OA.IDAL.pdb
+D:\Demo\OA\OA.WebApp\bin\OA.DALFactory.pdb
+D:\Demo\OA\OA.WebApp\bin\zh-Hans\EntityFramework.resources.dll
+D:\Demo\OA\OA.WebApp\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Demo\OA\OA.WebApp\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
+D:\Demo\OA\OA.WebApp\bin\zh-Hans\System.Web.Http.resources.dll
+D:\Demo\OA\OA.WebApp\bin\zh-Hans\System.Web.Http.WebHost.resources.dll
+D:\Demo\OA\OA.WebApp\bin\zh-Hans\System.Web.Mvc.resources.dll
+D:\Demo\OA\OA.WebApp\bin\zh-Hans\System.Web.Optimization.resources.dll
+D:\Demo\OA\OA.WebApp\bin\zh-Hans\System.Web.Providers.resources.dll
+D:\Demo\OA\OA.WebApp\bin\zh-Hans\System.Web.Razor.resources.dll
+D:\Demo\OA\OA.WebApp\bin\zh-Hans\System.Web.WebPages.resources.dll
+D:\Demo\OA\OA.WebApp\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+D:\Demo\OA\OA.WebApp\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+D:\Demo\OA\OA.WebApp\obj\Debug\OA.WebApp.csprojResolveAssemblyReference.cache
+D:\Demo\OA\OA.WebApp\obj\Debug\OA.WebApp.dll
+D:\Demo\OA\OA.WebApp\obj\Debug\OA.WebApp.pdb
+D:\Demo\OA\OA.WebApp\bin\Spring.Web.Mvc4.dll
+D:\Demo\OA\OA.WebApp\bin\Spring.Core.dll
+D:\Demo\OA\OA.WebApp\bin\Spring.Web.dll
+D:\Demo\OA\OA.WebApp\bin\Common.Logging.dll
+D:\Demo\OA\OA.WebApp\bin\log4net.dll
+D:\Demo\OA\OA.WebApp\bin\log4net.xml
+D:\Demo\OA\OA.WebApp\bin\OA.Commmon.dll
+D:\Demo\OA\OA.WebApp\bin\OA.Commmon.pdb
+D:\Demo\OA\OA.WebApp\bin\ICSharpCode.SharpZipLib.dll
+D:\Demo\OA\OA.WebApp\bin\Memcached.Client.dll
+D:\Demo\OA\OA.WebApp\bin\Memcached.Client.xml
+D:\Demo\OA\OA.WebApp\bin\OA.WebApp.dll.config
+D:\Source Code\OA\OA.WebApp\bin\OA.WebApp.dll.config
+D:\Source Code\OA\OA.WebApp\bin\OA.WebApp.dll
+D:\Source Code\OA\OA.WebApp\bin\OA.WebApp.pdb
+D:\Source Code\OA\OA.WebApp\bin\Antlr3.Runtime.dll
+D:\Source Code\OA\OA.WebApp\bin\EntityFramework.dll
+D:\Source Code\OA\OA.WebApp\bin\EntityFramework.SqlServer.dll
+D:\Source Code\OA\OA.WebApp\bin\log4net.dll
+D:\Source Code\OA\OA.WebApp\bin\Microsoft.Web.Infrastructure.dll
+D:\Source Code\OA\OA.WebApp\bin\Newtonsoft.Json.dll
+D:\Source Code\OA\OA.WebApp\bin\OA.BLL.dll
+D:\Source Code\OA\OA.WebApp\bin\OA.Commmon.dll
+D:\Source Code\OA\OA.WebApp\bin\OA.IBLL.dll
+D:\Source Code\OA\OA.WebApp\bin\OA.Model.dll
+D:\Source Code\OA\OA.WebApp\bin\Spring.Web.Mvc4.dll
+D:\Source Code\OA\OA.WebApp\bin\System.Net.Http.Formatting.dll
+D:\Source Code\OA\OA.WebApp\bin\System.Web.Http.dll
+D:\Source Code\OA\OA.WebApp\bin\System.Web.Http.WebHost.dll
+D:\Source Code\OA\OA.WebApp\bin\System.Web.Mvc.dll
+D:\Source Code\OA\OA.WebApp\bin\System.Web.Optimization.dll
+D:\Source Code\OA\OA.WebApp\bin\System.Web.Providers.dll
+D:\Source Code\OA\OA.WebApp\bin\System.Web.Razor.dll
+D:\Source Code\OA\OA.WebApp\bin\System.Web.WebPages.Deployment.dll
+D:\Source Code\OA\OA.WebApp\bin\System.Web.WebPages.dll
+D:\Source Code\OA\OA.WebApp\bin\System.Web.WebPages.Razor.dll
+D:\Source Code\OA\OA.WebApp\bin\WebGrease.dll
+D:\Source Code\OA\OA.WebApp\bin\OA.IDAL.dll
+D:\Source Code\OA\OA.WebApp\bin\OA.DALFactory.dll
+D:\Source Code\OA\OA.WebApp\bin\Memcached.Client.dll
+D:\Source Code\OA\OA.WebApp\bin\Spring.Core.dll
+D:\Source Code\OA\OA.WebApp\bin\Spring.Web.dll
+D:\Source Code\OA\OA.WebApp\bin\Common.Logging.dll
+D:\Source Code\OA\OA.WebApp\bin\ICSharpCode.SharpZipLib.dll
+D:\Source Code\OA\OA.WebApp\bin\OA.BLL.pdb
+D:\Source Code\OA\OA.WebApp\bin\OA.Commmon.pdb
+D:\Source Code\OA\OA.WebApp\bin\OA.IBLL.pdb
+D:\Source Code\OA\OA.WebApp\bin\OA.Model.pdb
+D:\Source Code\OA\OA.WebApp\bin\EntityFramework.xml
+D:\Source Code\OA\OA.WebApp\bin\EntityFramework.SqlServer.xml
+D:\Source Code\OA\OA.WebApp\bin\log4net.xml
+D:\Source Code\OA\OA.WebApp\bin\Newtonsoft.Json.xml
+D:\Source Code\OA\OA.WebApp\bin\System.Net.Http.Formatting.xml
+D:\Source Code\OA\OA.WebApp\bin\System.Web.Http.xml
+D:\Source Code\OA\OA.WebApp\bin\System.Web.Http.WebHost.xml
+D:\Source Code\OA\OA.WebApp\bin\System.Web.Mvc.xml
+D:\Source Code\OA\OA.WebApp\bin\System.Web.Razor.xml
+D:\Source Code\OA\OA.WebApp\bin\System.Web.WebPages.xml
+D:\Source Code\OA\OA.WebApp\bin\System.Web.WebPages.Deployment.xml
+D:\Source Code\OA\OA.WebApp\bin\System.Web.WebPages.Razor.xml
+D:\Source Code\OA\OA.WebApp\bin\OA.IDAL.pdb
+D:\Source Code\OA\OA.WebApp\bin\OA.DALFactory.pdb
+D:\Source Code\OA\OA.WebApp\bin\Memcached.Client.xml
+D:\Source Code\OA\OA.WebApp\bin\zh-Hans\EntityFramework.resources.dll
+D:\Source Code\OA\OA.WebApp\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Source Code\OA\OA.WebApp\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
+D:\Source Code\OA\OA.WebApp\bin\zh-Hans\System.Web.Http.resources.dll
+D:\Source Code\OA\OA.WebApp\bin\zh-Hans\System.Web.Http.WebHost.resources.dll
+D:\Source Code\OA\OA.WebApp\bin\zh-Hans\System.Web.Mvc.resources.dll
+D:\Source Code\OA\OA.WebApp\bin\zh-Hans\System.Web.Optimization.resources.dll
+D:\Source Code\OA\OA.WebApp\bin\zh-Hans\System.Web.Providers.resources.dll
+D:\Source Code\OA\OA.WebApp\bin\zh-Hans\System.Web.Razor.resources.dll
+D:\Source Code\OA\OA.WebApp\bin\zh-Hans\System.Web.WebPages.resources.dll
+D:\Source Code\OA\OA.WebApp\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+D:\Source Code\OA\OA.WebApp\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+D:\Source Code\OA\OA.WebApp\obj\Debug\OA.WebApp.dll
+D:\Source Code\OA\OA.WebApp\obj\Debug\OA.WebApp.pdb
+D:\Source Code\OA\OA.WebApp\bin\OA.IDAL.dll.config
+D:\Source Code\OA\OA.WebApp\bin\OA.DALFactory.dll.config
+D:\Source Code\OA\OA.WebApp\obj\Debug\OA.WebApp.csprojAssemblyReference.cache
+D:\Source Code\OA\OA.WebApp\obj\Debug\OA.WebApp.csproj.CoreCompileInputs.cache
+D:\Source Code\OA\OA.WebApp\obj\Debug\OA.WebApp.csproj.CopyComplete

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects>
+  <object name="UserService" type="OA.BLL.DictUserService,OA.BLL" singleton="false" >
+  </object>
+  <object name="MenuSerivce" type="OA.BLL.DictMenuService,OA.BLL" singleton="false" >
+  </object>
+  <object name="EducationService" type="OA.BLL.DictEducationService,OA.BLL" singleton="false">    
+  </object>
+  <object name="UserInfoService" type="OA.BLL.DictUserInfoService,OA.BLL" singleton="false">    
+  </object>
+  <object name="RoleService" type="OA.BLL.DictRoleService,OA.BLL" singleton="false">
+  </object>
+  <object name="ReportSerivce" type="OA.BLL.DictReportService,OA.BLL" singleton="false">
+  </object>
+  <object name="DataBaseService" type="OA.BLL.DataBaseService,OA.BLL" singleton="false">
+  </object>
+  <object name="ArgumentService" type="OA.BLL.DictArgumentService,OA.BLL" singleton="false">
+  </object>
+  <object name="ConfigService" type="OA.BLL.DictConfigService,OA.BLL" singleton="false">
+  </object>
+  <object name="StaticPageRecordService" type="OA.BLL.StaticPageRecordService,OA.BLL" singleton="false">
+  </object>
+</objects>

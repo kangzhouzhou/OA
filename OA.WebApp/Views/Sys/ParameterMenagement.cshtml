@@ -1,0 +1,161 @@
+﻿@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>系统配置</title>
+    <script src="~/Scripts/KxScripts/KxAjax.js"></script>
+    <script src="~/Scripts/KxScripts/KxBase.js"></script>
+
+    <script src="~/Scripts/jquery-1.11.3.js"></script>
+    <script src="~/Scripts/locale/easyui-lang-zh_CN.js"></script>
+    <script src="~/Scripts/jquery.easyui-1.4.5.js"></script>
+    <link href="~/Content/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/themes/default/easyui.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- 配置列表 -->
+    <div style="float:left;width:70%;height:100%;margin:0px;padding:0px;">
+        <table id="tdDictConfig"></table>
+    </div>
+    <!-- 配置界面 -->
+    <div style="float:right;width:30%;height:100%;margin:0px;padding:0px;">
+        <div id="divToolbar" style="border-bottom-width:1px;border-bottom-color:blue;border-bottom-style:solid">
+            <a href="#" id="aAddConfig" class="easyui-linkbutton" iconCls="icon-add" plain="true">增加</a>
+            <a href="#" id="aEditConfig" class="easyui-linkbutton" iconCls="icon-cut" plain="true">编辑</a>
+            <a href="#" id="aRemoveConfig" class="easyui-linkbutton" iconCls="icon-save" plain="true">删除</a>
+        </div>
+        <!-- 增加配置 -->
+        <div  id="divAddConfig" style="display:none" >
+            <div style="text-align:center;margin-top:10px;font-size:14px;">增&nbsp;加&nbsp;配&nbsp;置</div>
+            <div style="width:300px;margin:5px auto 0px;" >
+                <table style="border-collapse:separate; border-spacing:10px 5px;">
+                    <tr>
+                        <td>配置键：</td>
+                        <td><input id="txtAddConfigKey" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>配置值：</td>
+                        <td><input id="txtAddConfigValue" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;vertical-align:text-top">描&nbsp;&nbsp;&nbsp;述：</td>
+                        <td><textarea id="txtAddConfigMemo" rows="8" cols="21"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div style="width:130px;margin:0px auto">
+                                <input id="btnSaveAddConfig" type="button" value="增  加" />&nbsp;&nbsp;&nbsp;<input id="btnClearAddConfig" type="button" value="清  除" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        Kx.ready(function () {
+            getDictConfig();
+            //增加
+            $("#aAddConfig").click(addConfigHandler);
+            $("#btnSaveAddConfig").click(saveAddConfigHandler);
+            $("#btnClearAddConfig").click(clearAddConfigHandler);
+            $("#txtAddConfigKey").blur(verifyAddConfigKeyHandler);
+
+            //编辑
+            $("#aEditConfig").click(editConfigHandler);
+
+            //移除
+            $("#aRemoveConfig").click(removeConfigHandler);
+        });
+
+        //加载配置列表
+        function getDictConfig() {
+            $("#tdDictConfig").datagrid({
+                url: "/Sys/GetDictConfig",
+                pagination: false,
+                singleSelect: true,
+                height: "100%",
+                columns: [[
+                    { field: 'Key', title: '配置键', width: '20%', align: 'center' },
+                    { field: 'Value', title: '配置值', width: '30%', align: 'center' },
+                    { field: 'Memo', title: '说明', width: '50%', align: 'center' }
+                ]]
+            });
+        }
+
+        //显示增加配置界面
+        function addConfigHandler() {
+            $("#btnSaveAddConfig").attr('disabled', false);
+            clearAddConfigHandler();
+            $("#divAddConfig").css("display", "block");
+        }
+
+        //保存增加配置界面的值
+        function saveAddConfigHandler() {
+            //基本校验
+            var keyStr = $("#txtAddConfigKey").val();
+            if (keyStr.length == 0) {
+                $.messager.alert("提示", "请输入配置键,否则无法进行保存!");
+                return;
+            }
+            var valueStr = $("#txtAddConfigValue").val();
+            var memoStr = $("#txtAddConfigMemo").val();
+            Kx.mask();
+
+            Kx.post("/Sys/AddConfig", { key: keyStr, value: valueStr, memo: memoStr }, function (serData) {
+                Kx.unMask();
+                if (serData == "1") {
+                    //清除配置,进行增加
+                    clearAddConfigHandler();
+                    $("#divAddConfig").css("display", "none");
+                    //重新加在
+                    $("#tdDictConfig").datagrid("load");
+                    $.messager.show({ title: "提示", msg: "保存成功!" });
+                } else if (serData == "0") {
+                    $.messager.alert("提示", "新增配置保存失败!");
+                } else {
+                    $.messager.alert("提示", "新增配置保存失败!");
+                }
+            });
+        }
+
+        //清除增加配置界面的值
+        function clearAddConfigHandler() {
+            $("#txtAddConfigKey").val("");
+            $("#txtAddConfigValue").val("");
+            $("#txtAddConfigMemo").val("");
+        }
+
+        //验证增加配置界面的KEY值
+        function verifyAddConfigKeyHandler() {
+            if ($(this).val().length == 0)
+                return;
+            //异步校验
+            Kx.post("/Sys/VerifyConfigKey", { key: $(this).val() }, function (serData) {
+                if (serData == "1") {
+                    $("#btnSaveAddConfig").attr('disabled', false);
+                } else if (serData == "0") {
+                    $("#btnSaveAddConfig").attr('disabled', true);
+                    $.messager.alert("提示", "配置键重复,请进行修改!");
+                } else {
+                    $.messager.show({title:"警告",msg:"配置键验证失败!"});
+                }
+            });
+        }
+
+        //显示编辑配置界面
+        function editConfigHandler() {
+            //先判断是否选中了值
+        }
+
+        //移除指定选项
+        function removeConfigHandler() {
+
+        }
+    </script>
+</body>
+</html>
